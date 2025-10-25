@@ -2,415 +2,466 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Fun And Study</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fun And Study - Hero Hunmin</title>
 <style>
     :root {
-        --bg-color: #0f172a;      /* 어두운 남청색 배경 */
-        --card-color: #1e293b;    /* 다크 카드 */
+        --bg-color: #0f172a;
+        --panel-color: #1e2538;
+        --accent: #4f46e5;
         --text-main: #ffffff;
-        --text-dim: #94a3b8;
-        --accent: #4f46e5;        /* 인디고 */
-        --accent-hover: #6366f1;
+        --text-dim: rgba(255,255,255,0.65);
         --radius: 16px;
+        --radius-lg: 20px;
+        --border-color: rgba(255,255,255,0.07);
+        --shadow-card: 0 24px 48px rgba(0,0,0,0.7);
+        --shadow-button: 0 14px 28px rgba(0,0,0,0.6);
+        --thumb-bg: rgba(255,255,255,0.03);
+    }
+
+    * {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
     }
 
     body {
+        margin: 0;
+        background: radial-gradient(circle at 20% 20%, #1e2538 0%, #0f172a 60%);
         background-color: var(--bg-color);
         color: var(--text-main);
-        margin: 0;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont,
-            "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", Roboto, "Noto Sans", "Segoe UI", sans-serif;
+        line-height: 1.5;
         display: flex;
-        min-height: 100vh;
-        align-items: center;
         justify-content: center;
-        padding: 24px;
+        padding: 40px 16px 80px;
     }
 
-    .container {
-        max-width: 420px;
+    .page-wrap {
         width: 100%;
-        background-color: var(--card-color);
-        border-radius: var(--radius);
-        box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-        padding: 24px 24px 32px;
-        text-align: center;
-        border: 1px solid rgba(255,255,255,0.05);
+        max-width: 480px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
         position: relative;
     }
 
-    /* 상단 브랜드 타이틀 */
-    .brand-title {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--text-main);
-        text-align: center;
-        letter-spacing: -0.03em;
-        line-height: 1.2;
-        margin: 0 0 20px 0;
-        text-shadow: 0 20px 40px rgba(0,0,0,0.8);
-    }
-
-    /* 아이콘 + 게임명 섹션 */
-    .app-header {
+    /* 헤더(브랜드+제목+아이콘) */
+    .brand-block {
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-
-    .app-icon-wrapper {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 16px;
-    }
-
-    .app-icon {
-        width: 96px;
-        height: 96px;
-        border-radius: 20px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.7);
-        border: 1px solid rgba(255,255,255,0.08);
-        object-fit: cover;
-        background-color: #000;
-    }
-
-    .studio-name {
-        font-size: 0.8rem;
-        font-weight: 600;
-        margin: 0;
-        color: var(--text-dim);
-        letter-spacing: -0.02em;
-        line-height: 1.4;
         text-align: center;
+        gap: 16px;
+    }
+
+    .brand-name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-main);
+        text-shadow: 0 8px 24px rgba(0,0,0,0.8);
+    }
+
+    .game-identity {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        padding: 16px 20px;
+        max-width: 480px;
+        width: 100%;
+    }
+
+    .game-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        background-color: #000;
+        object-fit: cover;
     }
 
     .game-title {
-        font-size: 1.1rem;
+        font-size: 1.125rem;
         font-weight: 600;
-        margin-top: 4px;
-        margin-bottom: 0;
         color: var(--text-main);
-        letter-spacing: -0.03em;
         line-height: 1.4;
         text-align: center;
     }
 
-    .section-label {
-        margin-top: 24px;
-        margin-bottom: 12px;
-        font-size: 0.75rem;
-        font-weight: 600;
+    .game-sub {
+        font-size: 0.9rem;
         color: var(--text-dim);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        text-align: left;
+        line-height: 1.4;
+        text-align: center;
     }
 
-    /* 버튼 리스트 */
-    .link-list {
+    /* 버튼 섹션 */
+    .actions-panel {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        padding: 20px;
         display: flex;
         flex-direction: column;
+        gap: 16px;
+    }
+
+    .actions-title {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-dim);
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+
+    .btn-list {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
         gap: 12px;
         width: 100%;
     }
 
-    .btn-link {
-        display: block;
-        width: 100%;
-        background-color: var(--accent);
-        color: #fff;
-        text-decoration: none;
-        text-align: center;
-        font-size: 0.9rem;
-        font-weight: 600;
-        padding: 14px 16px;
+    .link-btn {
+        appearance: none;
+        border: 0;
         border-radius: var(--radius);
-        line-height: 1.3;
-        box-shadow: 0 16px 36px rgba(79,70,229,0.5);
-        transition: all 0.15s ease;
-        border: 0;
-        cursor: pointer;
-        word-break: keep-all;
-    }
-
-    .btn-link.secondary {
-        background-color: #334155;
-        color: #fff;
-        box-shadow: 0 16px 36px rgba(0,0,0,0.7);
-    }
-
-    .btn-link:hover {
-        background-color: var(--accent-hover);
-        box-shadow: 0 20px 44px rgba(99,102,241,0.6);
-    }
-
-    .btn-link.secondary:hover {
-        background-color: #475569;
-        box-shadow: 0 20px 44px rgba(0,0,0,0.8);
-    }
-
-    /* 갤러리 섹션 */
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        width: 100%;
-    }
-
-    /* 썸네일 버튼 */
-    .thumb-btn {
-        position: relative;
-        border: 0;
-        padding: 0;
-        margin: 0;
-        background: #0f172a;
-        border-radius: 12px;
-        overflow: hidden;
-        cursor: pointer;
-        box-shadow: 0 16px 32px rgba(0,0,0,0.8);
-        border: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .thumb-btn img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        max-height: 110px;
-        object-fit: cover;
-    }
-
-    .thumb-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            to bottom,
-            rgba(0,0,0,0) 40%,
-            rgba(0,0,0,0.6) 100%
-        );
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
-        padding: 6px 8px;
-        font-size: 0.7rem;
-        font-weight: 600;
-        color: #fff;
-        pointer-events: none;
-        text-shadow: 0 2px 6px rgba(0,0,0,0.9);
-        line-height: 1.2;
-    }
-
-    /* 한 칸만 차지하면 정사각형 느낌 -> 마지막 이미지는 그리드 전체 너비로 2칸 차지 */
-    .gallery-grid .wide {
-        grid-column: span 2;
-    }
-
-    /* 라이트박스 (클릭 시 전체 확대 보기) */
-    .lightbox-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.8);
-        display: none; /* JS로 켜짐 */
-        align-items: center;
-        justify-content: center;
-        padding: 16px;
-        z-index: 9999;
-    }
-
-    .lightbox-inner {
-        position: relative;
-        max-width: 90vw;
-        max-height: 80vh;
-        border-radius: 16px;
-        background-color: #000;
-        box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+        background: linear-gradient(145deg, rgba(79,70,229,0.18) 0%, rgba(79,70,229,0) 60%);
         border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: var(--shadow-button);
+        color: var(--text-main);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        line-height: 1.4;
+        padding: 14px 16px;
+        text-align: center;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
+        flex-direction: column;
+        gap: 4px;
+        position: relative;
     }
 
-    .lightbox-inner img {
-        max-width: 100%;
-        max-height: 80vh;
-        object-fit: contain;
-        display: block;
-        background-color: #000;
-    }
-
-    .lightbox-close {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        background: rgba(15,23,42,0.8);
-        color: #fff;
-        border: 0;
-        border-radius: 8px;
-        font-size: 0.8rem;
+    .link-btn .main-line {
         font-weight: 600;
-        line-height: 1;
-        padding: 8px 10px;
-        cursor: pointer;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-        border: 1px solid rgba(255,255,255,0.15);
+        color: var(--text-main);
+        font-size: 1rem;
+        line-height: 1.4;
     }
 
-    .lightbox-close:active {
-        transform: scale(0.96);
+    .link-btn .sub-line {
+        font-weight: 400;
+        color: var(--text-dim);
+        font-size: 0.8rem;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
     }
 
-    /* 비디오 섹션 */
+    .link-btn:active {
+        transform: scale(0.98);
+    }
+
+    /* 비디오 영역 (세로 영상용) */
+    .video-panel {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .section-heading {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-dim);
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+
     .video-wrapper {
         position: relative;
         width: 100%;
+        max-width: 360px;
+        aspect-ratio: 9 / 16; /* 세로 영상 비율 */
         border-radius: var(--radius);
         overflow: hidden;
         box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         background-color: #000;
-        aspect-ratio: 16 / 9;
+        margin-left: auto;
+        margin-right: auto;
         border: 1px solid rgba(255,255,255,0.07);
     }
 
     .video-wrapper iframe {
         position: absolute;
         inset: 0;
+        border: 0;
         width: 100%;
         height: 100%;
-        border: 0;
     }
 
-    footer {
-        margin-top: 28px;
+    /* 스크린샷 섹션 */
+    .screens-panel {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .screens-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    @media (min-width: 480px) {
+        .screens-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .thumb {
+        position: relative;
+        background: var(--thumb-bg);
+        border-radius: var(--radius);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 16px 32px rgba(0,0,0,0.7);
+        overflow: hidden;
+        cursor: pointer;
+        width: 100%;
+        aspect-ratio: 9 / 16; /* 세로 스크린샷 비율 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .thumb::after {
+        content: "Tap to view";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+        color: #fff;
         font-size: 0.7rem;
-        line-height: 1.4;
+        line-height: 1.2;
+        text-align: center;
+        padding: 8px 4px;
+        letter-spacing: -0.02em;
+        font-weight: 500;
+        pointer-events: none;
+    }
+
+    /* 모달(풀스크린 이미지 뷰어) */
+    .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.8);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        z-index: 9999;
+    }
+
+    .modal-inner {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+        border: 1px solid rgba(255,255,255,0.2);
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-inner img {
+        display: block;
+        max-width: 90vw;
+        max-height: 90vh;
+        object-fit: contain;
+        background-color: #000;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(0,0,0,0.6);
+        border: 1px solid rgba(255,255,255,0.4);
+        border-radius: 8px;
+        color: #fff;
+        font-size: 0.8rem;
+        line-height: 1;
+        padding: 8px 10px;
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.9);
+    }
+
+    .modal-close:active {
+        transform: scale(0.96);
+    }
+
+    /* 작은 푸터 느낌으로 간단 안내 */
+    .footer-note {
+        font-size: 0.7rem;
         color: var(--text-dim);
         text-align: center;
+        line-height: 1.4;
+        margin-top: 8px;
     }
+
 </style>
 </head>
 <body>
-    <main class="container">
 
-        <!-- 브랜드 타이틀 (가장 위, 크게) -->
-        <div class="brand-title">Fun And Study</div>
+<div class="page-wrap">
 
-        <!-- 아이콘 + 게임명 -->
-        <section class="app-header">
-            <div class="app-icon-wrapper">
-                <img
-                    class="app-icon"
-                    src="Hero Hunmin - English Icon.png"
-                    alt="Hero Hunmin App Icon"
-                />
+    <!-- 브랜드 / 타이틀 / 아이콘 -->
+    <header class="brand-block">
+        <div class="brand-name">Fun And Study</div>
+
+        <div class="game-identity">
+            <img class="game-icon" src="Hero Hunmin - English Icon.png" alt="Hero Hunmin Icon" />
+
+            <div class="game-title">Hero Hunmin: Roguelike Learning English Game</div>
+            <div class="game-sub">
+                English learning + roguelike battle action.<br/>
+                Child-friendly, no personalized ads.
             </div>
-            <p class="studio-name">Fun And Study</p>
-            <p class="game-title">
-                Hero Hunmin: Roguelike Learning English Game
-            </p>
-        </section>
+        </div>
+    </header>
 
-        <!-- 문서 섹션 -->
-        <div class="section-label">Documents</div>
-        <div class="link-list">
-            <a class="btn-link" href="privacy.html">
-                Privacy Policy<br/>
-                (개인정보 처리방침)
+    <!-- 액션 버튼 영역 -->
+    <section class="actions-panel">
+        <div class="actions-title">Game Policies / Support</div>
+
+        <div class="btn-list">
+            <a class="link-btn" href="privacy.html">
+                <div class="main-line">Privacy Policy</div>
+                <div class="sub-line">개인정보 처리방침</div>
             </a>
-            <a class="btn-link secondary" href="account-deletion.html">
-                Hero Hunmin: Account Deletion Policy<br/>
-                (계정 삭제 안내)
+
+            <a class="link-btn" href="account-deletion.html">
+                <div class="main-line">Hero Hunmin: Account Deletion Policy</div>
+                <div class="sub-line">계정 삭제 안내 / 데이터 삭제 정책</div>
             </a>
         </div>
+    </section>
 
-        <!-- 갤러리 섹션 -->
-        <div class="section-label">Screenshots</div>
-        <div class="gallery-grid">
-            <!-- 1 -->
-            <button class="thumb-btn" data-full="Sacred_InGame.png">
-                <img src="Sacred_InGame.png" alt="Gameplay Screenshot 1" />
-                <div class="thumb-overlay">Gameplay</div>
-            </button>
+    <!-- 게임 영상 (세로) -->
+    <section class="video-panel">
+        <div class="section-heading">Gameplay Video</div>
 
-            <!-- 2 -->
-            <button class="thumb-btn" data-full="Berserker_InGame_Quiz.png">
-                <img src="Berserker_InGame_Quiz.png" alt="Quiz Screenshot" />
-                <div class="thumb-overlay">Quiz Mode</div>
-            </button>
-
-            <!-- 3 -->
-            <button class="thumb-btn" data-full="Sacred_InGame_ProtectBuff.png">
-                <img src="Sacred_InGame_ProtectBuff.png" alt="Buff Screenshot" />
-                <div class="thumb-overlay">Buff / Shield</div>
-            </button>
-
-            <!-- 4 -->
-            <button class="thumb-btn" data-full="Berserker_Giant_Quiz.png">
-                <img src="Berserker_Giant_Quiz.png" alt="Boss Quiz Screenshot" />
-                <div class="thumb-overlay">Boss Quiz</div>
-            </button>
-
-            <!-- 5 (wide: 가로 2칸 차지) -->
-            <button class="thumb-btn wide" data-full="Sacred_Roulette_Quiz.png">
-                <img src="Sacred_Roulette_Quiz.png" alt="Roulette Quiz Screenshot" />
-                <div class="thumb-overlay">Roulette Quiz</div>
-            </button>
-        </div>
-
-        <!-- 비디오 섹션 -->
-        <div class="section-label">Video</div>
         <div class="video-wrapper">
             <iframe
                 src="https://www.youtube.com/embed/SgGiZ_Mvy44"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                allowfullscreen
-            ></iframe>
+                title="Hero Hunmin Gameplay"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
         </div>
 
-        <footer>
-            © Fun And Study. All rights reserved.
-        </footer>
-    </main>
-
-    <!-- 라이트박스 (확대 이미지 뷰어) -->
-    <div class="lightbox-backdrop" id="lightbox">
-        <div class="lightbox-inner">
-            <button class="lightbox-close" id="lightboxClose">✕</button>
-            <img id="lightboxImg" src="" alt="Full Screenshot" />
+        <div class="footer-note">
+            Gameplay footage (vertical). Actual content may change.
         </div>
+    </section>
+
+    <!-- 스크린샷 갤러리 -->
+    <section class="screens-panel">
+        <div class="section-heading">Screenshots</div>
+
+        <div class="screens-grid">
+            <div class="thumb" data-img="Sacred_InGame.png">
+                <img src="Sacred_InGame.png" alt="Screenshot 1"/>
+            </div>
+
+            <div class="thumb" data-img="Berserker_InGame_Quiz.png">
+                <img src="Berserker_InGame_Quiz.png" alt="Screenshot 2"/>
+            </div>
+
+            <div class="thumb" data-img="Sacred_InGame_ProtectBuff.png">
+                <img src="Sacred_InGame_ProtectBuff.png" alt="Screenshot 3"/>
+            </div>
+
+            <div class="thumb" data-img="Berserker_Giant_Quiz.png">
+                <img src="Berserker_Giant_Quiz.png" alt="Screenshot 4"/>
+            </div>
+
+            <div class="thumb" data-img="Sacred_Roulette_Quiz.png">
+                <img src="Sacred_Roulette_Quiz.png" alt="Screenshot 5"/>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            Tap an image to enlarge.
+        </div>
+    </section>
+
+</div>
+
+<!-- 전체 화면 이미지 뷰어 -->
+<div class="modal-backdrop" id="imgModal">
+    <div class="modal-inner">
+        <img id="modalImage" src="" alt="Preview"/>
+        <button class="modal-close" id="modalClose">✕ Close</button>
     </div>
+</div>
 
 <script>
-    // 간단한 라이트박스 JS
-    (function () {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxClose = document.getElementById('lightboxClose');
+    // 이미지 확대 모달 로직
+    const modal = document.getElementById('imgModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.getElementById('modalClose');
 
-        // 썸네일 버튼들에 클릭 리스너 연결
-        document.querySelectorAll('.thumb-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const fullSrc = btn.getAttribute('data-full');
-                lightboxImg.setAttribute('src', fullSrc);
-                lightbox.style.display = 'flex';
-            });
+    // 썸네일들에 클릭 이벤트 연결
+    document.querySelectorAll('.thumb').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+            const imgPath = thumb.getAttribute('data-img');
+            modalImage.src = imgPath;
+            modal.style.display = 'flex';
         });
+    });
 
-        // 닫기 버튼
-        lightboxClose.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-            lightboxImg.setAttribute('src', '');
-        });
+    // 닫기 버튼
+    modalClose.addEventListener('click', () => {
+        modal.style.display = 'none';
+        modalImage.src = '';
+    });
 
-        // 백드롭 클릭 시 닫기 (이미지 영역 바깥 클릭)
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.style.display = 'none';
-                lightboxImg.setAttribute('src', '');
-            }
-        });
-    })();
+    // 배경 클릭도 닫기
+    modal.addEventListener('click', (e) => {
+        // 바깥쪽(뒷배경)을 눌렀을 때만 닫기
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            modalImage.src = '';
+        }
+    });
 </script>
+
 </body>
 </html>
