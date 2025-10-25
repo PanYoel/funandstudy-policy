@@ -6,7 +6,7 @@
 <title>Fun And Study</title>
 <style>
     :root {
-        --bg-color: #0f172a;      /* 아주 진한 남색 배경 */
+        --bg-color: #0f172a;      /* 어두운 남청색 배경 */
         --card-color: #1e293b;    /* 다크 카드 */
         --text-main: #ffffff;
         --text-dim: #94a3b8;
@@ -29,17 +29,36 @@
     }
 
     .container {
-        max-width: 400px;
+        max-width: 420px;
         width: 100%;
         background-color: var(--card-color);
         border-radius: var(--radius);
         box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-        padding: 24px 24px 28px;
+        padding: 24px 24px 32px;
         text-align: center;
         border: 1px solid rgba(255,255,255,0.05);
+        position: relative;
     }
 
-    /* 아이콘 스타일 */
+    /* 상단 브랜드 타이틀 */
+    .brand-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-main);
+        text-align: center;
+        letter-spacing: -0.03em;
+        line-height: 1.2;
+        margin: 0 0 20px 0;
+        text-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    }
+
+    /* 아이콘 + 게임명 섹션 */
+    .app-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .app-icon-wrapper {
         display: flex;
         justify-content: center;
@@ -56,23 +75,25 @@
         background-color: #000;
     }
 
-    h1 {
-        font-size: 1rem;
+    .studio-name {
+        font-size: 0.8rem;
         font-weight: 600;
         margin: 0;
         color: var(--text-dim);
         letter-spacing: -0.02em;
         line-height: 1.4;
+        text-align: center;
     }
 
-    .title-main {
-        font-size: 1.2rem;
+    .game-title {
+        font-size: 1.1rem;
         font-weight: 600;
         margin-top: 4px;
         margin-bottom: 0;
         color: var(--text-main);
         letter-spacing: -0.03em;
         line-height: 1.4;
+        text-align: center;
     }
 
     .section-label {
@@ -86,7 +107,7 @@
         text-align: left;
     }
 
-    /* 버튼 리스트를 세로 정렬하고 전체 폭에 맞추기 */
+    /* 버튼 리스트 */
     .link-list {
         display: flex;
         flex-direction: column;
@@ -129,7 +150,117 @@
         box-shadow: 0 20px 44px rgba(0,0,0,0.8);
     }
 
-    /* 비디오 박스 */
+    /* 갤러리 섹션 */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        width: 100%;
+    }
+
+    /* 썸네일 버튼 */
+    .thumb-btn {
+        position: relative;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background: #0f172a;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 16px 32px rgba(0,0,0,0.8);
+        border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .thumb-btn img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: 110px;
+        object-fit: cover;
+    }
+
+    .thumb-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to bottom,
+            rgba(0,0,0,0) 40%,
+            rgba(0,0,0,0.6) 100%
+        );
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 6px 8px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #fff;
+        pointer-events: none;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+        line-height: 1.2;
+    }
+
+    /* 한 칸만 차지하면 정사각형 느낌 -> 마지막 이미지는 그리드 전체 너비로 2칸 차지 */
+    .gallery-grid .wide {
+        grid-column: span 2;
+    }
+
+    /* 라이트박스 (클릭 시 전체 확대 보기) */
+    .lightbox-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.8);
+        display: none; /* JS로 켜짐 */
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        z-index: 9999;
+    }
+
+    .lightbox-inner {
+        position: relative;
+        max-width: 90vw;
+        max-height: 80vh;
+        border-radius: 16px;
+        background-color: #000;
+        box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+        border: 1px solid rgba(255,255,255,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .lightbox-inner img {
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+        display: block;
+        background-color: #000;
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(15,23,42,0.8);
+        color: #fff;
+        border: 0;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        line-height: 1;
+        padding: 8px 10px;
+        cursor: pointer;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .lightbox-close:active {
+        transform: scale(0.96);
+    }
+
+    /* 비디오 섹션 */
     .video-wrapper {
         position: relative;
         width: 100%;
@@ -161,20 +292,23 @@
 <body>
     <main class="container">
 
-        <!-- 앱 아이콘 -->
-        <div class="app-icon-wrapper">
-            <img
-                class="app-icon"
-                src="Hero Hunmin - English Icon.png"
-                alt="Hero Hunmin App Icon"
-            />
-        </div>
+        <!-- 브랜드 타이틀 (가장 위, 크게) -->
+        <div class="brand-title">Fun And Study</div>
 
-        <!-- 스튜디오명 / 게임명 -->
-        <h1>Fun And Study</h1>
-        <p class="title-main">
-            Hero Hunmin: Roguelike Learning English Game
-        </p>
+        <!-- 아이콘 + 게임명 -->
+        <section class="app-header">
+            <div class="app-icon-wrapper">
+                <img
+                    class="app-icon"
+                    src="Hero Hunmin - English Icon.png"
+                    alt="Hero Hunmin App Icon"
+                />
+            </div>
+            <p class="studio-name">Fun And Study</p>
+            <p class="game-title">
+                Hero Hunmin: Roguelike Learning English Game
+            </p>
+        </section>
 
         <!-- 문서 섹션 -->
         <div class="section-label">Documents</div>
@@ -187,6 +321,40 @@
                 Hero Hunmin: Account Deletion Policy<br/>
                 (계정 삭제 안내)
             </a>
+        </div>
+
+        <!-- 갤러리 섹션 -->
+        <div class="section-label">Screenshots</div>
+        <div class="gallery-grid">
+            <!-- 1 -->
+            <button class="thumb-btn" data-full="Sacred_InGame.png">
+                <img src="Sacred_InGame.png" alt="Gameplay Screenshot 1" />
+                <div class="thumb-overlay">Gameplay</div>
+            </button>
+
+            <!-- 2 -->
+            <button class="thumb-btn" data-full="Berserker_InGame_Quiz.png">
+                <img src="Berserker_InGame_Quiz.png" alt="Quiz Screenshot" />
+                <div class="thumb-overlay">Quiz Mode</div>
+            </button>
+
+            <!-- 3 -->
+            <button class="thumb-btn" data-full="Sacred_InGame_ProtectBuff.png">
+                <img src="Sacred_InGame_ProtectBuff.png" alt="Buff Screenshot" />
+                <div class="thumb-overlay">Buff / Shield</div>
+            </button>
+
+            <!-- 4 -->
+            <button class="thumb-btn" data-full="Berserker_Giant_Quiz.png">
+                <img src="Berserker_Giant_Quiz.png" alt="Boss Quiz Screenshot" />
+                <div class="thumb-overlay">Boss Quiz</div>
+            </button>
+
+            <!-- 5 (wide: 가로 2칸 차지) -->
+            <button class="thumb-btn wide" data-full="Sacred_Roulette_Quiz.png">
+                <img src="Sacred_Roulette_Quiz.png" alt="Roulette Quiz Screenshot" />
+                <div class="thumb-overlay">Roulette Quiz</div>
+            </button>
         </div>
 
         <!-- 비디오 섹션 -->
@@ -204,5 +372,45 @@
             © Fun And Study. All rights reserved.
         </footer>
     </main>
+
+    <!-- 라이트박스 (확대 이미지 뷰어) -->
+    <div class="lightbox-backdrop" id="lightbox">
+        <div class="lightbox-inner">
+            <button class="lightbox-close" id="lightboxClose">✕</button>
+            <img id="lightboxImg" src="" alt="Full Screenshot" />
+        </div>
+    </div>
+
+<script>
+    // 간단한 라이트박스 JS
+    (function () {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        // 썸네일 버튼들에 클릭 리스너 연결
+        document.querySelectorAll('.thumb-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const fullSrc = btn.getAttribute('data-full');
+                lightboxImg.setAttribute('src', fullSrc);
+                lightbox.style.display = 'flex';
+            });
+        });
+
+        // 닫기 버튼
+        lightboxClose.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            lightboxImg.setAttribute('src', '');
+        });
+
+        // 백드롭 클릭 시 닫기 (이미지 영역 바깥 클릭)
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+                lightboxImg.setAttribute('src', '');
+            }
+        });
+    })();
+</script>
 </body>
 </html>
