@@ -92,13 +92,6 @@
         text-align: center;
     }
 
-    .game-sub {
-        font-size: 0.9rem;
-        color: var(--text-dim);
-        line-height: 1.4;
-        text-align: center;
-    }
-
     /* 언어 선택 패널 */
     .lang-panel {
         background: rgba(255,255,255,0.03);
@@ -160,6 +153,11 @@
         line-height: 1.4;
         margin-top: 8px;
     }
+
+    .footer-note a {
+        color: var(--text-dim);
+        text-decoration: underline;
+    }
 </style>
 </head>
 <body>
@@ -174,10 +172,6 @@
             <img class="game-icon" src="images/Hero Hunmin - English Icon.png" alt="Hero Hunmin Icon" />
 
             <div class="game-title">Hero Hunmin: Roguelike Learning English Game</div>
-            <div class="game-sub">
-                English learning + roguelike battle action.<br/>
-                Child-friendly, no personalized ads.
-            </div>
         </div>
     </header>
 
@@ -235,8 +229,8 @@
         </div>
 
         <div class="footer-note">
-            각 언어별 페이지는 <code>home/</code> 폴더에 있는 HTML 파일로 연결됩니다.<br/>
-            예: 한국어 → <code>home/home-korean.html</code>
+            Developer: <a href="mailto:meteor666a@gmail.com">meteor666a@gmail.com</a><br/>
+            © 2025 Fun And Study. All rights reserved.
         </div>
     </section>
 
