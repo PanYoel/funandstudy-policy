@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fun And Study - Hero Hunmin</title>
+<style>
+    :root {
+        --bg-color: #0f172a;
+        --panel-color: #1e2538;
+        --accent: #4f46e5;
+        --text-main: #ffffff;
+        --text-dim: rgba(255,255,255,0.65);
+        --radius: 16px;
+        --radius-lg: 20px;
+        --border-color: rgba(255,255,255,0.07);
+        --shadow-card: 0 24px 48px rgba(0,0,0,0.7);
+        --shadow-button: 0 14px 28px rgba(0,0,0,0.6);
+        --thumb-bg: rgba(255,255,255,0.03);
+    }
+
+    * {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        margin: 0;
+        background: radial-gradient(circle at 20% 20%, #1e2538 0%, #0f172a 60%);
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", Roboto, "Noto Sans", "Segoe UI", sans-serif;
+        line-height: 1.5;
+        display: flex;
+        justify-content: center;
+        padding: 40px 16px 80px;
+    }
+
+    .page-wrap {
+        width: 100%;
+        max-width: 480px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        position: relative;
+    }
+
+    /* ヘッダー（ブランド・タイトル・アイコン） */
+    .brand-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .brand-name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-main);
+        text-shadow: 0 8px 24px rgba(0,0,0,0.8);
+    }
+
+    .game-identity {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        padding: 16px 20px;
+        max-width: 480px;
+        width: 100%;
+    }
+
+    .game-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        background-color: #000;
+        object-fit: cover;
+    }
+
+    .game-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: var(--text-main);
+        line-height: 1.4;
+        text-align: center;
+    }
+
+    .game-sub {
+        font-size: 0.9rem;
+        color: var(--text-dim);
+        line-height: 1.4;
+        text-align: center;
+    }
+
+    /* ボタンセクション */
+    .actions-panel {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .actions-title {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-dim);
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+
+    .btn-list {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .link-btn {
+        appearance: none;
+        border: 0;
+        border-radius: var(--radius);
+        background: linear-gradient(145deg, rgba(79,70,229,0.18) 0%, rgba(79,70,229,0) 60%);
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: var(--shadow-button);
+        color: var(--text-main);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        line-height: 1.4;
+        padding: 14px 16px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        position: relative;
+    }
+
+    .link-btn .main-line {
+        font-weight: 600;
+        color: var(--text-main);
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    .link-btn .sub-line {
+        font-weight: 400;
+        color: var(--text-dim);
+        font-size: 0.8rem;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+    }
+
+    .link-btn:active {
+        transform: scale(0.98);
+    }
+
+    /* ゲーム説明ボタン */
+    .desc-btn {
+        margin-top: 4px;
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        align-self: stretch;
+    }
+
+    /* ストアリンクセクション */
+    .store-panel {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .store-links {
+        display: flex;
+        gap: 12px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .store-links .link-btn {
+        flex: 1 1 0;
+    }
+
+    @media (max-width: 420px) {
+        .store-links {
+            flex-direction: column;
+        }
+    }
+
+    /* 動画エリア（縦型動画用） */
+    .video-panel {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .section-heading {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-dim);
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 360px;
+        aspect-ratio: 9 / 16; /* 세로 영상 비율 */
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        background-color: #000;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .video-wrapper iframe {
+        position: absolute;
+        inset: 0;
+        border: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* スクリーンショットセクション */
+    .screens-panel {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .screens-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    @media (min-width: 480px) {
+        .screens-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .thumb {
+        position: relative;
+        background: var(--thumb-bg);
+        border-radius: var(--radius);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 16px 32px rgba(0,0,0,0.7);
+        overflow: hidden;
+        cursor: pointer;
+        width: 100%;
+        aspect-ratio: 9 / 16; /* 세로 스크린샷 비율 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .thumb::after {
+        content: "タップで拡大表示";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+        color: #fff;
+        font-size: 0.7rem;
+        line-height: 1.2;
+        text-align: center;
+        padding: 8px 4px;
+        letter-spacing: -0.02em;
+        font-weight: 500;
+        pointer-events: none;
+    }
+
+    /* モーダル（全画面画像ビューア・説明ビューア共通） */
+    .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.8);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        z-index: 9999;
+    }
+
+    .modal-inner {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+        border: 1px solid rgba(255,255,255,0.2);
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-inner img {
+        display: block;
+        max-width: 90vw;
+        max-height: 90vh;
+        object-fit: contain;
+        background-color: #000;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(0,0,0,0.6);
+        border: 1px solid rgba(255,255,255,0.4);
+        border-radius: 8px;
+        color: #fff;
+        font-size: 0.8rem;
+        line-height: 1;
+        padding: 8px 10px;
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.9);
+    }
+
+    .modal-close:active {
+        transform: scale(0.96);
+    }
+
+    /* 説明モーダル専用 */
+    .desc-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        background: #020617;
+        padding: 20px 20px 24px;
+        max-width: 480px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .desc-inner h2 {
+        font-size: 1.05rem;
+        margin: 0 0 8px 0;
+    }
+
+    .desc-inner p {
+        font-size: 0.85rem;
+        color: var(--text-dim);
+        line-height: 1.6;
+        white-space: pre-line;
+    }
+
+    /* 小さなフッターメッセージ */
+    .footer-note {
+        font-size: 0.7rem;
+        color: var(--text-dim);
+        text-align: center;
+        line-height: 1.4;
+        margin-top: 8px;
+    }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+    <!-- ヘッダー（ブランド・タイトル・アイコン） -->
+    <header class="brand-block">
+        <div class="brand-name">Fun And Study</div>
+
+        <div class="game-identity">
+            <img class="game-icon" src="../images/Hero Hunmin - English Icon.png" alt="Hero Hunmin アイコン" />
+
+            <div class="game-title">Hero Hunmin：ローグライク英語学習ゲーム</div>
+            <div class="game-sub">
+                ゲームを遊んでいるうちに英語力がぐんぐんアップ！<br/>
+                新感覚ローグライク英語学習ゲーム。
+            </div>
+
+            <button type="button" class="link-btn desc-btn" id="openDesc">
+                ゲーム紹介を詳しく見る
+            </button>
+        </div>
+    </header>
+
+    <!-- アクションボタンエリア（ポリシー／アカウント削除） -->
+    <section class="actions-panel">
+        <div class="actions-title">ゲーム情報・ポリシー</div>
+
+        <div class="btn-list">
+            <a class="link-btn" href="../privacy.html">
+                <div class="main-line">プライバシーポリシー</div>
+                <div class="sub-line">Hero Hunmin のプライバシーポリシーページへ移動します。</div>
+            </a>
+
+            <a class="link-btn" href="../account-deletion.html">
+                <div class="main-line">アカウント削除のご案内</div>
+                <div class="sub-line">Hero Hunmin のアカウントおよびデータの削除方法をご案内します。</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ストアリンク（Play Store / App Store） -->
+    <section class="store-panel">
+        <div class="section-heading">ストアリンク</div>
+        <div class="store-links">
+            <a
+                class="link-btn"
+                href="https://play.google.com/store/apps/details?id=com.funandstudy.roguelitelearnenglish"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <div class="main-line">Google Play Store</div>
+                <div class="sub-line">Android 版をダウンロード</div>
+            </a>
+
+            <a
+                class="link-btn"
+                href="https://apps.apple.com/kr/app/hero-hunmin-%EB%A1%9C%EA%B7%B8%EB%9D%BC%EC%9D%B4%ED%81%AC-%EC%98%81%EC%96%B4-%ED%95%99%EC%8A%B5-%EA%B2%8C%EC%9E%84/id6754667621"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <div class="main-line">Apple App Store</div>
+                <div class="sub-line">iOS 版をダウンロード</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ゲーム動画（縦型） -->
+    <section class="video-panel">
+        <div class="section-heading">ゲームプレイ動画</div>
+
+        <div class="video-wrapper">
+            <iframe
+                src="https://www.youtube.com/embed/SgGiZ_Mvy44"
+                title="Hero Hunmin Gameplay"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="footer-note">
+            縦長画面の実際のゲームプレイ動画です。<br/>
+            実際のゲーム内容はアップデートにより変更される場合があります。
+        </div>
+    </section>
+
+    <!-- スクリーンショットギャラリー -->
+    <section class="screens-panel">
+        <div class="section-heading">ゲームスクリーンショット</div>
+
+        <div class="screens-grid">
+            <div class="thumb" data-img="../images/iPhone_Berserk_GamePlay_02.jpg">
+                <img src="../images/iPhone_Berserk_GamePlay_02.jpg" alt="スクリーンショット 1"/>
+            </div>
+
+            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_01.jpg">
+                <img src="../images/iPhone_Berserk_GameQuiz_01.jpg" alt="スクリーンショット 2"/>
+            </div>
+
+            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_02.jpg">
+                <img src="../images/iPhone_Berserk_GameQuiz_02.jpg" alt="スクリーンショット 3"/>
+            </div>
+
+            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg">
+                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg" alt="スクリーンショット 4"/>
+            </div>
+
+            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg">
+                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg" alt="スクリーンショット 5"/>
+            </div>
+
+            <div class="thumb" data-img="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg">
+                <img src="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg" alt="スクリーンショット 6"/>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            画像をタップすると拡大して表示できます。
+        </div>
+    </section>
+
+    <!-- カスタマーサポート -->
+    <section class="actions-panel">
+        <div class="actions-title">カスタマーサポート</div>
+        <div class="btn-list">
+            <a class="link-btn" href="mailto:meteor666a@gmail.com?subject=Hero%20Hunmin%20カスタマーサポートお問い合わせ&body=こんにちは。%0D%0A%0D%0A下記の項目に沿って、できるだけ詳しくご記入ください。%0D%0A- お問い合わせの種類（不具合、使いにくい点、機能要望など）：%0D%0A- ご利用端末（OS、機種名）：%0D%0A- 発生した状況の説明：%0D%0A%0D%0Aありがとうございます。">
+                <div class="main-line">お問い合わせメール： meteor666a@gmail.com</div>
+                <div class="sub-line">不具合報告、ご要望、その他のお問い合わせはメールでお送りください。</div>
+            </a>
+        </div>
+        <div class="footer-note">
+            できるだけ早くご返信いたします。<br/>
+            © 2025 Fun And Study. All rights reserved.
+        </div>
+    </section>
+
+</div>
+
+<!-- フルスクリーン画像ビューア -->
+<div class="modal-backdrop" id="imgModal">
+    <div class="modal-inner">
+        <img id="modalImage" src="" alt="スクリーンショットプレビュー"/>
+        <button class="modal-close" id="modalCloseImg">✕ 閉じる</button>
+    </div>
+</div>
+
+<!-- ゲーム説明モーダル -->
+<div class="modal-backdrop" id="descModal">
+    <div class="modal-inner desc-inner">
+        <button class="modal-close" id="modalCloseDesc">✕ 閉じる</button>
+        <h2>ゲーム紹介</h2>
+        <p>
+ローグライクならではのスリリングな戦闘と成長に、英語学習を完璧に融合しました！
+絶え間ない挑戦で勇者を育て、
+宝箱を開けて自分だけのビルドを完成させましょう。
+英語クイズに正解するとクールタイムが短くなり、クイズバフが発動します！
+
+頭にしっかり残る学習システム
+ ・詰め込みではなく、「聞く・話す・クイズで解く」アウトプット中心の英語学習！
+ ・2万文以上、3万語以上の膨大なデータベース！
+ ・文で学ぶことで、記憶の持続と実際の活用により効果的！
+ ・気になる単語は検索して、その場で例文と一緒に学習！
+
+世界中の英語を詰め込んだ、終わりのないコンテンツ
+ ・基礎からしっかり！［日常会話］
+ ・趣味も英語で！［旅行・サッカー・ファッション・自動車・フィットネス・ポップソング］
+ ・知的な会話のために［ギリシャ・ローマ神話・世界文化・経済用語］
+ ・偉人から学ぶ！［リンカーン］
+ ・ゲームでゲームを学ぶ！［DAVE THE DIVER（序盤の内容を収録）］
+ ・未来のための IT 英語！
+    - ［Excel］仕事で役立つ主要関数・統計関数をマスター！
+    - ［Unity］ゲーム開発の基礎、エディターと C# 関数を攻略！
+    - ［コーディング］C#・Python・JAVA のコア概念を学ぶ！
+
+いちばん楽しい英語学習を、今すぐスタート！
+ゲームを楽しんでいるうちに、いつの間にか英語力がぐんぐんアップ！
+さあ、今すぐ Hero Hunmin の世界へ！
+        </p>
+    </div>
+</div>
+
+<script>
+    // 画像拡大モーダルのロジック
+    const imgModal = document.getElementById('imgModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalCloseImg = document.getElementById('modalCloseImg');
+
+    document.querySelectorAll('.thumb').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+            const imgPath = thumb.getAttribute('data-img');
+            modalImage.src = imgPath;
+            imgModal.style.display = 'flex';
+        });
+    });
+
+    modalCloseImg.addEventListener('click', () => {
+        imgModal.style.display = 'none';
+        modalImage.src = '';
+    });
+
+    imgModal.addEventListener('click', (e) => {
+        if (e.target === imgModal) {
+            imgModal.style.display = 'none';
+            modalImage.src = '';
+        }
+    });
+
+    // ゲーム説明モーダルのロジック
+    const descModal = document.getElementById('descModal');
+    const openDescBtn = document.getElementById('openDesc');
+    const modalCloseDesc = document.getElementById('modalCloseDesc');
+
+    openDescBtn.addEventListener('click', () => {
+        descModal.style.display = 'flex';
+    });
+
+    modalCloseDesc.addEventListener('click', () => {
+        descModal.style.display = 'none';
+    });
+
+    descModal.addEventListener('click', (e) => {
+        if (e.target === descModal) {
+            descModal.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
