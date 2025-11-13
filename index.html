@@ -37,8 +37,8 @@
     }
 
     .page-wrap {
-        width: 100%
-        ;max-width: 480px;
+        width: 100%;
+        max-width: 480px;
         display: flex;
         flex-direction: column;
         gap: 24px;
@@ -165,6 +165,35 @@
 
     .link-btn:active {
         transform: scale(0.98);
+    }
+
+    /* 스토어 링크 섹션 */
+    .store-panel {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-card);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .store-links {
+        display: flex;
+        gap: 12px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .store-links .link-btn {
+        flex: 1 1 0;
+    }
+
+    @media (max-width: 420px) {
+        .store-links {
+            flex-direction: column;
+        }
     }
 
     /* 비디오 영역 (세로 영상용) */
@@ -344,7 +373,7 @@
         <div class="brand-name">Fun And Study</div>
 
         <div class="game-identity">
-            <img class="game-icon" src="Hero Hunmin - English Icon.png" alt="Hero Hunmin Icon" />
+            <img class="game-icon" src="images/Hero Hunmin - English Icon.png" alt="Hero Hunmin Icon" />
 
             <div class="game-title">Hero Hunmin: Roguelike Learning English Game</div>
             <div class="game-sub">
@@ -354,7 +383,7 @@
         </div>
     </header>
 
-    <!-- 액션 버튼 영역 -->
+    <!-- 액션 버튼 영역 (정책/계정 삭제) -->
     <section class="actions-panel">
         <div class="actions-title">Game Policies / Support</div>
 
@@ -367,6 +396,32 @@
             <a class="link-btn" href="account-deletion.html">
                 <div class="main-line">Hero Hunmin: Account Deletion Policy</div>
                 <div class="sub-line">계정 삭제 안내 / 데이터 삭제 정책</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- 스토어 링크 (Play Store / App Store) -->
+    <section class="store-panel">
+        <div class="section-heading">Store Links / 스토어 링크</div>
+        <div class="store-links">
+            <a
+                class="link-btn"
+                href="https://play.google.com/store/apps/details?id=com.funandstudy.roguelitelearnenglish"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <div class="main-line">Google Play Store</div>
+                <div class="sub-line">Android 버전 다운로드</div>
+            </a>
+
+            <a
+                class="link-btn"
+                href="https://apps.apple.com/kr/app/hero-hunmin-%EB%A1%9C%EA%B7%B8%EB%9D%BC%EC%9D%B4%ED%81%AC-%EC%98%81%EC%96%B4-%ED%95%99%EC%8A%B5-%EA%B2%8C%EC%9E%84/id6754667621"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <div class="main-line">Apple App Store</div>
+                <div class="sub-line">iOS 버전 다운로드</div>
             </a>
         </div>
     </section>
@@ -395,24 +450,28 @@
         <div class="section-heading">Screenshots</div>
 
         <div class="screens-grid">
-            <div class="thumb" data-img="Sacred_InGame.png">
-                <img src="Sacred_InGame.png" alt="Screenshot 1"/>
+            <div class="thumb" data-img="images/iPhone_Berserk_GamePlay_02.jpg">
+                <img src="images/iPhone_Berserk_GamePlay_02.jpg" alt="Screenshot 1"/>
             </div>
 
-            <div class="thumb" data-img="Berserker_InGame_Quiz.png">
-                <img src="Berserker_InGame_Quiz.png" alt="Screenshot 2"/>
+            <div class="thumb" data-img="images/iPhone_Berserk_GameQuiz_01.jpg">
+                <img src="images/iPhone_Berserk_GameQuiz_01.jpg" alt="Screenshot 2"/>
             </div>
 
-            <div class="thumb" data-img="Sacred_InGame_ProtectBuff.png">
-                <img src="Sacred_InGame_ProtectBuff.png" alt="Screenshot 3"/>
+            <div class="thumb" data-img="images/iPhone_Berserk_GameQuiz_02.jpg">
+                <img src="images/iPhone_Berserk_GameQuiz_02.jpg" alt="Screenshot 3"/>
             </div>
 
-            <div class="thumb" data-img="Berserker_Giant_Quiz.png">
-                <img src="Berserker_Giant_Quiz.png" alt="Screenshot 4"/>
+            <div class="thumb" data-img="images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg">
+                <img src="images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg" alt="Screenshot 4"/>
             </div>
 
-            <div class="thumb" data-img="Sacred_Roulette_Quiz.png">
-                <img src="Sacred_Roulette_Quiz.png" alt="Screenshot 5"/>
+            <div class="thumb" data-img="images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg">
+                <img src="images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg" alt="Screenshot 5"/>
+            </div>
+
+            <div class="thumb" data-img="images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg">
+                <img src="images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg" alt="Screenshot 6"/>
             </div>
         </div>
 
