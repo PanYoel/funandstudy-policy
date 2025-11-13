@@ -16,7 +16,6 @@
         --border-color: rgba(255,255,255,0.07);
         --shadow-card: 0 24px 48px rgba(0,0,0,0.7);
         --shadow-button: 0 14px 28px rgba(0,0,0,0.6);
-        --thumb-bg: rgba(255,255,255,0.03);
     }
 
     * {
@@ -100,8 +99,8 @@
         text-align: center;
     }
 
-    /* 버튼 섹션 */
-    .actions-panel {
+    /* 언어 선택 패널 */
+    .lang-panel {
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--border-color);
         border-radius: var(--radius-lg);
@@ -112,25 +111,28 @@
         gap: 16px;
     }
 
-    .actions-title {
-        font-size: 0.9rem;
+    .lang-title {
+        font-size: 0.95rem;
         font-weight: 500;
         color: var(--text-dim);
         text-align: center;
         letter-spacing: -0.02em;
     }
 
-    .btn-list {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
+    .lang-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
-        width: 100%;
     }
 
-    .link-btn {
+    @media (max-width: 380px) {
+        .lang-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .lang-btn {
         appearance: none;
-        border: 0;
         border-radius: var(--radius);
         background: linear-gradient(145deg, rgba(79,70,229,0.18) 0%, rgba(79,70,229,0) 60%);
         border: 1px solid rgba(255,255,255,0.1);
@@ -140,221 +142,17 @@
         font-size: 0.95rem;
         font-weight: 500;
         line-height: 1.4;
-        padding: 14px 16px;
+        padding: 12px 14px;
         text-align: center;
         display: flex;
-        flex-direction: column;
-        gap: 4px;
-        position: relative;
+        align-items: center;
+        justify-content: center;
     }
 
-    .link-btn .main-line {
-        font-weight: 600;
-        color: var(--text-main);
-        font-size: 1rem;
-        line-height: 1.4;
-    }
-
-    .link-btn .sub-line {
-        font-weight: 400;
-        color: var(--text-dim);
-        font-size: 0.8rem;
-        line-height: 1.3;
-        letter-spacing: -0.02em;
-    }
-
-    .link-btn:active {
+    .lang-btn:active {
         transform: scale(0.98);
     }
 
-    /* 스토어 링크 섹션 */
-    .store-panel {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-card);
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .store-links {
-        display: flex;
-        gap: 12px;
-        width: 100%;
-        flex-wrap: wrap;
-    }
-
-    .store-links .link-btn {
-        flex: 1 1 0;
-    }
-
-    @media (max-width: 420px) {
-        .store-links {
-            flex-direction: column;
-        }
-    }
-
-    /* 비디오 영역 (세로 영상용) */
-    .video-panel {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-card);
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .section-heading {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--text-dim);
-        text-align: center;
-        letter-spacing: -0.02em;
-    }
-
-    .video-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 360px;
-        aspect-ratio: 9 / 16; /* 세로 영상 비율 */
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-        background-color: #000;
-        margin-left: auto;
-        margin-right: auto;
-        border: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .video-wrapper iframe {
-        position: absolute;
-        inset: 0;
-        border: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    /* 스크린샷 섹션 */
-    .screens-panel {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-card);
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .screens-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    @media (min-width: 480px) {
-        .screens-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    .thumb {
-        position: relative;
-        background: var(--thumb-bg);
-        border-radius: var(--radius);
-        border: 1px solid var(--border-color);
-        box-shadow: 0 16px 32px rgba(0,0,0,0.7);
-        overflow: hidden;
-        cursor: pointer;
-        width: 100%;
-        aspect-ratio: 9 / 16; /* 세로 스크린샷 비율 */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    .thumb::after {
-        content: "Tap to view";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
-        color: #fff;
-        font-size: 0.7rem;
-        line-height: 1.2;
-        text-align: center;
-        padding: 8px 4px;
-        letter-spacing: -0.02em;
-        font-weight: 500;
-        pointer-events: none;
-    }
-
-    /* 모달(풀스크린 이미지 뷰어) */
-    .modal-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.8);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 24px;
-        z-index: 9999;
-    }
-
-    .modal-inner {
-        position: relative;
-        max-width: 90vw;
-        max-height: 90vh;
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.9);
-        border: 1px solid rgba(255,255,255,0.2);
-        background: #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .modal-inner img {
-        display: block;
-        max-width: 90vw;
-        max-height: 90vh;
-        object-fit: contain;
-        background-color: #000;
-    }
-
-    .modal-close {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        background: rgba(0,0,0,0.6);
-        border: 1px solid rgba(255,255,255,0.4);
-        border-radius: 8px;
-        color: #fff;
-        font-size: 0.8rem;
-        line-height: 1;
-        padding: 8px 10px;
-        cursor: pointer;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.9);
-    }
-
-    .modal-close:active {
-        transform: scale(0.96);
-    }
-
-    /* 작은 푸터 느낌으로 간단 안내 */
     .footer-note {
         font-size: 0.7rem;
         color: var(--text-dim);
@@ -383,157 +181,66 @@
         </div>
     </header>
 
-    <!-- 액션 버튼 영역 (정책/계정 삭제) -->
-    <section class="actions-panel">
-        <div class="actions-title">Game Policies / Support</div>
-
-        <div class="btn-list">
-            <a class="link-btn" href="privacy.html">
-                <div class="main-line">Privacy Policy</div>
-                <div class="sub-line">개인정보 처리방침</div>
-            </a>
-
-            <a class="link-btn" href="account-deletion.html">
-                <div class="main-line">Hero Hunmin: Account Deletion Policy</div>
-                <div class="sub-line">계정 삭제 안내 / 데이터 삭제 정책</div>
-            </a>
+    <!-- 언어 선택 -->
+    <section class="lang-panel">
+        <div class="lang-title">
+            Choose your language / 사용 언어를 선택하세요
         </div>
-    </section>
 
-    <!-- 스토어 링크 (Play Store / App Store) -->
-    <section class="store-panel">
-        <div class="section-heading">Store Links / 스토어 링크</div>
-        <div class="store-links">
-            <a
-                class="link-btn"
-                href="https://play.google.com/store/apps/details?id=com.funandstudy.roguelitelearnenglish"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <div class="main-line">Google Play Store</div>
-                <div class="sub-line">Android 버전 다운로드</div>
+        <div class="lang-grid">
+            <!-- 한국어 -->
+            <a class="lang-btn" href="home/home-korean.html">
+                한국어
             </a>
 
-            <a
-                class="link-btn"
-                href="https://apps.apple.com/kr/app/hero-hunmin-%EB%A1%9C%EA%B7%B8%EB%9D%BC%EC%9D%B4%ED%81%AC-%EC%98%81%EC%96%B4-%ED%95%99%EC%8A%B5-%EA%B2%8C%EC%9E%84/id6754667621"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <div class="main-line">Apple App Store</div>
-                <div class="sub-line">iOS 버전 다운로드</div>
+            <!-- 일본어 -->
+            <a class="lang-btn" href="home/home-japanese.html">
+                日本語
             </a>
-        </div>
-    </section>
 
-    <!-- 게임 영상 (세로) -->
-    <section class="video-panel">
-        <div class="section-heading">Gameplay Video</div>
+            <!-- 중국어 간체 -->
+            <a class="lang-btn" href="home/home-chinese-simplified.html">
+                简体中文
+            </a>
 
-        <div class="video-wrapper">
-            <iframe
-                src="https://www.youtube.com/embed/SgGiZ_Mvy44"
-                title="Hero Hunmin Gameplay"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
+            <!-- 중국어 번체 -->
+            <a class="lang-btn" href="home/home-chinese-traditional.html">
+                繁體中文
+            </a>
+
+            <!-- 스페인어 -->
+            <a class="lang-btn" href="home/home-spanish.html">
+                Español
+            </a>
+
+            <!-- 포르투갈어 -->
+            <a class="lang-btn" href="home/home-portuguese.html">
+                Português
+            </a>
+
+            <!-- 베트남어 -->
+            <a class="lang-btn" href="home/home-vietnamese.html">
+                Tiếng Việt
+            </a>
+
+            <!-- 태국어 -->
+            <a class="lang-btn" href="home/home-thai.html">
+                ไทย
+            </a>
+
+            <!-- 러시아어 -->
+            <a class="lang-btn" href="home/home-russian.html">
+                Русский
+            </a>
         </div>
 
         <div class="footer-note">
-            Gameplay footage (vertical). Actual content may change.
-        </div>
-    </section>
-
-    <!-- 스크린샷 갤러리 -->
-    <section class="screens-panel">
-        <div class="section-heading">Screenshots</div>
-
-        <div class="screens-grid">
-            <div class="thumb" data-img="images/iPhone_Berserk_GamePlay_02.jpg">
-                <img src="images/iPhone_Berserk_GamePlay_02.jpg" alt="Screenshot 1"/>
-            </div>
-
-            <div class="thumb" data-img="images/iPhone_Berserk_GameQuiz_01.jpg">
-                <img src="images/iPhone_Berserk_GameQuiz_01.jpg" alt="Screenshot 2"/>
-            </div>
-
-            <div class="thumb" data-img="images/iPhone_Berserk_GameQuiz_02.jpg">
-                <img src="images/iPhone_Berserk_GameQuiz_02.jpg" alt="Screenshot 3"/>
-            </div>
-
-            <div class="thumb" data-img="images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg">
-                <img src="images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg" alt="Screenshot 4"/>
-            </div>
-
-            <div class="thumb" data-img="images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg">
-                <img src="images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg" alt="Screenshot 5"/>
-            </div>
-
-            <div class="thumb" data-img="images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg">
-                <img src="images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg" alt="Screenshot 6"/>
-            </div>
-        </div>
-
-        <div class="footer-note">
-            Tap an image to enlarge.
-        </div>
-    </section>
-
-    <!-- Customer Support -->
-    <section class="actions-panel">
-        <div class="actions-title">Customer Support / 고객지원</div>
-        <div class="btn-list">
-            <a class="link-btn" href="mailto:meteor666a@gmail.com?subject=Hero%20Hunmin%20Support&body=Please%20describe%20your%20issue%20(or%20feedback)%20in%20English%20or%20Korean.">
-                <div class="main-line">Contact Us: meteor666a@gmail.com</div>
-                <div class="sub-line">고객지원 문의 이메일 (클릭하여 메일 보내기)</div>
-            </a>
-        </div>
-        <div class="footer-note">
-            We aim to respond as soon as possible. 가능한 빠르게 답변드릴게요.
+            각 언어별 페이지는 <code>home/</code> 폴더에 있는 HTML 파일로 연결됩니다.<br/>
+            예: 한국어 → <code>home/home-korean.html</code>
         </div>
     </section>
 
 </div>
-
-<!-- 전체 화면 이미지 뷰어 -->
-<div class="modal-backdrop" id="imgModal">
-    <div class="modal-inner">
-        <img id="modalImage" src="" alt="Preview"/>
-        <button class="modal-close" id="modalClose">✕ Close</button>
-    </div>
-</div>
-
-<script>
-    // 이미지 확대 모달 로직
-    const modal = document.getElementById('imgModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalClose = document.getElementById('modalClose');
-
-    // 썸네일들에 클릭 이벤트 연결
-    document.querySelectorAll('.thumb').forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            const imgPath = thumb.getAttribute('data-img');
-            modalImage.src = imgPath;
-            modal.style.display = 'flex';
-        });
-    });
-
-    // 닫기 버튼
-    modalClose.addEventListener('click', () => {
-        modal.style.display = 'none';
-        modalImage.src = '';
-    });
-
-    // 배경 클릭도 닫기
-    modal.addEventListener('click', (e) => {
-        // 바깥쪽(뒷배경)을 눌렀을 때만 닫기
-        if (e.target === modal) {
-            modal.style.display = 'none';
-            modalImage.src = '';
-        }
-    });
-</script>
 
 </body>
 </html>
