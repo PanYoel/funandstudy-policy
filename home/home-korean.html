@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -167,6 +167,14 @@
         transform: scale(0.98);
     }
 
+    /* 게임 설명 버튼 */
+    .desc-btn {
+        margin-top: 4px;
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        align-self: stretch;
+    }
+
     /* 스토어 링크 섹션 */
     .store-panel {
         background: rgba(255,255,255,0.03);
@@ -285,7 +293,7 @@
     }
 
     .thumb::after {
-        content: "Tap to view";
+        content: "눌러서 크게 보기";
         position: absolute;
         left: 0;
         right: 0;
@@ -301,7 +309,7 @@
         pointer-events: none;
     }
 
-    /* 모달(풀스크린 이미지 뷰어) */
+    /* 모달(풀스크린 이미지 뷰어, 설명 뷰어 공통) */
     .modal-backdrop {
         position: fixed;
         inset: 0;
@@ -354,6 +362,31 @@
         transform: scale(0.96);
     }
 
+    /* 설명 모달 전용 */
+    .desc-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        background: #020617;
+        padding: 20px 20px 24px;
+        max-width: 480px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .desc-inner h2 {
+        font-size: 1.05rem;
+        margin: 0 0 8px 0;
+    }
+
+    .desc-inner p {
+        font-size: 0.85rem;
+        color: var(--text-dim);
+        line-height: 1.6;
+        white-space: pre-line;
+    }
+
     /* 작은 푸터 느낌으로 간단 안내 */
     .footer-note {
         font-size: 0.7rem;
@@ -373,36 +406,40 @@
         <div class="brand-name">Fun And Study</div>
 
         <div class="game-identity">
-            <img class="game-icon" src="images/Hero Hunmin - English Icon.png" alt="Hero Hunmin Icon" />
+            <img class="game-icon" src="../images/Hero Hunmin - English Icon.png" alt="Hero Hunmin 아이콘" />
 
-            <div class="game-title">Hero Hunmin: Roguelike Learning English Game</div>
+            <div class="game-title">Hero Hunmin: 로그라이크 영어 학습 게임</div>
             <div class="game-sub">
-                English learning + roguelike battle action.<br/>
-                Child-friendly, no personalized ads.
+                게임을 즐기다 보면 영어 실력이 쑥쑥!<br/>
+                신개념 로그라이크 영어 학습.
             </div>
+
+            <button type="button" class="link-btn desc-btn" id="openDesc">
+                게임 소개 자세히 보기
+            </button>
         </div>
     </header>
 
     <!-- 액션 버튼 영역 (정책/계정 삭제) -->
     <section class="actions-panel">
-        <div class="actions-title">Game Policies / Support</div>
+        <div class="actions-title">게임 정보 및 정책</div>
 
         <div class="btn-list">
-            <a class="link-btn" href="privacy.html">
-                <div class="main-line">Privacy Policy</div>
-                <div class="sub-line">개인정보 처리방침</div>
+            <a class="link-btn" href="../privacy.html">
+                <div class="main-line">개인정보 처리방침</div>
+                <div class="sub-line">Hero Hunmin의 개인정보 처리방침 페이지로 이동합니다.</div>
             </a>
 
-            <a class="link-btn" href="account-deletion.html">
-                <div class="main-line">Hero Hunmin: Account Deletion Policy</div>
-                <div class="sub-line">계정 삭제 안내 / 데이터 삭제 정책</div>
+            <a class="link-btn" href="../account-deletion.html">
+                <div class="main-line">계정 삭제 안내</div>
+                <div class="sub-line">Hero Hunmin 계정 및 데이터 삭제 방법을 안내합니다.</div>
             </a>
         </div>
     </section>
 
     <!-- 스토어 링크 (Play Store / App Store) -->
     <section class="store-panel">
-        <div class="section-heading">Store Links / 스토어 링크</div>
+        <div class="section-heading">스토어 링크</div>
         <div class="store-links">
             <a
                 class="link-btn"
@@ -428,7 +465,7 @@
 
     <!-- 게임 영상 (세로) -->
     <section class="video-panel">
-        <div class="section-heading">Gameplay Video</div>
+        <div class="section-heading">게임 플레이 영상</div>
 
         <div class="video-wrapper">
             <iframe
@@ -441,56 +478,58 @@
         </div>
 
         <div class="footer-note">
-            Gameplay footage (vertical). Actual content may change.
+            세로 형태의 실제 게임 플레이 영상입니다.<br/>
+            실제 게임 내용은 업데이트에 따라 변경될 수 있습니다.
         </div>
     </section>
 
     <!-- 스크린샷 갤러리 -->
     <section class="screens-panel">
-        <div class="section-heading">Screenshots</div>
+        <div class="section-heading">게임 스크린샷</div>
 
         <div class="screens-grid">
-            <div class="thumb" data-img="images/iPhone_Berserk_GamePlay_02.jpg">
-                <img src="images/iPhone_Berserk_GamePlay_02.jpg" alt="Screenshot 1"/>
+            <div class="thumb" data-img="../images/iPhone_Berserk_GamePlay_02.jpg">
+                <img src="../images/iPhone_Berserk_GamePlay_02.jpg" alt="스크린샷 1"/>
             </div>
 
-            <div class="thumb" data-img="images/iPhone_Berserk_GameQuiz_01.jpg">
-                <img src="images/iPhone_Berserk_GameQuiz_01.jpg" alt="Screenshot 2"/>
+            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_01.jpg">
+                <img src="../images/iPhone_Berserk_GameQuiz_01.jpg" alt="스크린샷 2"/>
             </div>
 
-            <div class="thumb" data-img="images/iPhone_Berserk_GameQuiz_02.jpg">
-                <img src="images/iPhone_Berserk_GameQuiz_02.jpg" alt="Screenshot 3"/>
+            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_02.jpg">
+                <img src="../images/iPhone_Berserk_GameQuiz_02.jpg" alt="스크린샷 3"/>
             </div>
 
-            <div class="thumb" data-img="images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg">
-                <img src="images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg" alt="Screenshot 4"/>
+            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg">
+                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg" alt="스크린샷 4"/>
             </div>
 
-            <div class="thumb" data-img="images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg">
-                <img src="images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg" alt="Screenshot 5"/>
+            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg">
+                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg" alt="스크린샷 5"/>
             </div>
 
-            <div class="thumb" data-img="images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg">
-                <img src="images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg" alt="Screenshot 6"/>
+            <div class="thumb" data-img="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg">
+                <img src="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg" alt="스크린샷 6"/>
             </div>
         </div>
 
         <div class="footer-note">
-            Tap an image to enlarge.
+            이미지를 누르면 크게 볼 수 있습니다.
         </div>
     </section>
 
     <!-- Customer Support -->
     <section class="actions-panel">
-        <div class="actions-title">Customer Support / 고객지원</div>
+        <div class="actions-title">고객지원</div>
         <div class="btn-list">
-            <a class="link-btn" href="mailto:meteor666a@gmail.com?subject=Hero%20Hunmin%20Support&body=Please%20describe%20your%20issue%20(or%20feedback)%20in%20English%20or%20Korean.">
-                <div class="main-line">Contact Us: meteor666a@gmail.com</div>
-                <div class="sub-line">고객지원 문의 이메일 (클릭하여 메일 보내기)</div>
+            <a class="link-btn" href="mailto:meteor666a@gmail.com?subject=Hero%20Hunmin%20고객지원%20문의&body=안녕하세요.%0D%0A%0D%0A아래 내용을 참고하여 문의 사항을 자세히 적어 주세요.%0D%0A- 문의 종류(오류, 불편 사항, 기능 제안 등):%0D%0A- 사용 기기(OS, 기기명):%0D%0A- 발생 상황 설명:%0D%0A%0D%0A감사합니다.">
+                <div class="main-line">문의 이메일: meteor666a@gmail.com</div>
+                <div class="sub-line">오류 신고, 개선 요청, 기타 문의를 이메일로 보내주세요.</div>
             </a>
         </div>
         <div class="footer-note">
-            We aim to respond as soon as possible. 가능한 빠르게 답변드릴게요.
+            가능한 빠르게 답변드리겠습니다.<br/>
+            © 2025 Fun And Study. All rights reserved.
         </div>
     </section>
 
@@ -499,38 +538,88 @@
 <!-- 전체 화면 이미지 뷰어 -->
 <div class="modal-backdrop" id="imgModal">
     <div class="modal-inner">
-        <img id="modalImage" src="" alt="Preview"/>
-        <button class="modal-close" id="modalClose">✕ Close</button>
+        <img id="modalImage" src="" alt="스크린샷 미리보기"/>
+        <button class="modal-close" id="modalCloseImg">✕ 닫기</button>
+    </div>
+</div>
+
+<!-- 게임 설명 모달 -->
+<div class="modal-backdrop" id="descModal">
+    <div class="modal-inner desc-inner">
+        <button class="modal-close" id="modalCloseDesc">✕ 닫기</button>
+        <h2>게임 소개</h2>
+        <p>
+로그라이크의 짜릿한 전투와 성장에 영어 학습을 완벽하게 녹였습니다!
+끊임없는 도전으로 용사를 성장시키고,
+보물상자를 열어 나만의 빌드를 완성하세요.
+영어 퀴즈를 맞추면 쿨타임이 줄어들고, 퀴즈 버프가 발동됩니다!
+
+뇌리에 박히는 학습 시스템
+ • 주입식 없이, 듣고 말하고 퀴즈로 익히는 출력 기반 영어 학습!
+ • 2만+ 문장, 3만+ 단어의 방대한 데이터베이스!
+ • 문장 학습은 기억 지속과 활용에 더 효과적이에요!
+ • 궁금한 단어를 검색해 문장으로 바로 학습!
+
+세상의 모든 영어를 담다! 끝없이 추가되는 콘텐츠
+ • 기본부터 탄탄히! [일상 회화]
+ • 내 취미는 영어로? [여행, 축구, 패션, 자동차, 헬스, 팝송]
+ • 지적인 대화를 위해! [그리스·로마 신화, 세계 문화, 경제 용어]
+ • 위인에게 배우다! [링컨]
+ • 게임으로 게임을 배우다! [DAVE THE DIVER (초반부 내용 수록)]
+ • 미래를 위한 IT 영어!
+    - [엑셀] 업무의 신이 되는 핵심/통계 함수 마스터!
+    - [Unity] 게임 개발의 기초, 에디터와 C# 함수 정복!
+    - [코딩] C#, Python, JAVA 핵심 개념 배우기!
+
+가장 재미있는 영어 공부, 지금 시작하세요!
+게임을 즐기다 보면 어느새 영어 실력이 쑥쑥!
+지금 바로 Hero Hunmin의 세계로 접속하세요!
+        </p>
     </div>
 </div>
 
 <script>
     // 이미지 확대 모달 로직
-    const modal = document.getElementById('imgModal');
+    const imgModal = document.getElementById('imgModal');
     const modalImage = document.getElementById('modalImage');
-    const modalClose = document.getElementById('modalClose');
+    const modalCloseImg = document.getElementById('modalCloseImg');
 
-    // 썸네일들에 클릭 이벤트 연결
     document.querySelectorAll('.thumb').forEach(thumb => {
         thumb.addEventListener('click', () => {
             const imgPath = thumb.getAttribute('data-img');
             modalImage.src = imgPath;
-            modal.style.display = 'flex';
+            imgModal.style.display = 'flex';
         });
     });
 
-    // 닫기 버튼
-    modalClose.addEventListener('click', () => {
-        modal.style.display = 'none';
+    modalCloseImg.addEventListener('click', () => {
+        imgModal.style.display = 'none';
         modalImage.src = '';
     });
 
-    // 배경 클릭도 닫기
-    modal.addEventListener('click', (e) => {
-        // 바깥쪽(뒷배경)을 눌렀을 때만 닫기
-        if (e.target === modal) {
-            modal.style.display = 'none';
+    imgModal.addEventListener('click', (e) => {
+        if (e.target === imgModal) {
+            imgModal.style.display = 'none';
             modalImage.src = '';
+        }
+    });
+
+    // 게임 설명 모달 로직
+    const descModal = document.getElementById('descModal');
+    const openDescBtn = document.getElementById('openDesc');
+    const modalCloseDesc = document.getElementById('modalCloseDesc');
+
+    openDescBtn.addEventListener('click', () => {
+        descModal.style.display = 'flex';
+    });
+
+    modalCloseDesc.addEventListener('click', () => {
+        descModal.style.display = 'none';
+    });
+
+    descModal.addEventListener('click', (e) => {
+        if (e.target === descModal) {
+            descModal.style.display = 'none';
         }
     });
 </script>
