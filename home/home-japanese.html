@@ -1,9 +1,14 @@
+아래 전체 코드를 `home-japanese.html`에 그대로 붙여넣으면 됩니다.
+
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fun And Study - Hero Hunmin</title>
+
+<title>Fun And Study - RougeMin</title>
+
 <style>
     :root {
         --bg-color: #0f172a;
@@ -26,10 +31,24 @@
 
     body {
         margin: 0;
-        background: radial-gradient(circle at 20% 20%, #1e2538 0%, #0f172a 60%);
+        background:
+            radial-gradient(
+                circle at 20% 20%,
+                #1e2538 0%,
+                #0f172a 60%
+            );
         background-color: var(--bg-color);
         color: var(--text-main);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", Roboto, "Noto Sans", "Segoe UI", sans-serif;
+        font-family:
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Inter",
+            Roboto,
+            "Noto Sans JP",
+            "Noto Sans",
+            "Segoe UI",
+            sans-serif;
         line-height: 1.5;
         display: flex;
         justify-content: center;
@@ -45,7 +64,7 @@
         position: relative;
     }
 
-    /* ヘッダー（ブランド・タイトル・アイコン） */
+    /* ブランド、ゲームタイトル、アイコン */
     .brand-block {
         display: flex;
         flex-direction: column;
@@ -100,7 +119,7 @@
         text-align: center;
     }
 
-    /* ボタンセクション */
+    /* 共通ボタンパネル */
     .actions-panel {
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--border-color);
@@ -132,7 +151,12 @@
         appearance: none;
         border: 0;
         border-radius: var(--radius);
-        background: linear-gradient(145deg, rgba(79,70,229,0.18) 0%, rgba(79,70,229,0) 60%);
+        background:
+            linear-gradient(
+                145deg,
+                rgba(79,70,229,0.18) 0%,
+                rgba(79,70,229,0) 60%
+            );
         border: 1px solid rgba(255,255,255,0.1);
         box-shadow: var(--shadow-button);
         color: var(--text-main);
@@ -146,6 +170,7 @@
         flex-direction: column;
         gap: 4px;
         position: relative;
+        cursor: pointer;
     }
 
     .link-btn .main-line {
@@ -167,7 +192,7 @@
         transform: scale(0.98);
     }
 
-    /* ゲーム説明ボタン */
+    /* ゲーム紹介ボタン */
     .desc-btn {
         margin-top: 4px;
         padding: 10px 14px;
@@ -175,7 +200,7 @@
         align-self: stretch;
     }
 
-    /* ストアリンクセクション */
+    /* ストアリンク */
     .store-panel {
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--border-color);
@@ -204,7 +229,16 @@
         }
     }
 
-    /* 動画エリア（縦型動画用） */
+    /* 共通セクションタイトル */
+    .section-heading {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-dim);
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+
+    /* YouTube動画 */
     .video-panel {
         background: rgba(255,255,255,0.02);
         border: 1px solid var(--border-color);
@@ -216,19 +250,11 @@
         gap: 16px;
     }
 
-    .section-heading {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--text-dim);
-        text-align: center;
-        letter-spacing: -0.02em;
-    }
-
     .video-wrapper {
         position: relative;
         width: 100%;
         max-width: 360px;
-        aspect-ratio: 9 / 16; /* 세로 영상 비율 */
+        aspect-ratio: 9 / 16;
         border-radius: var(--radius);
         overflow: hidden;
         box-shadow: 0 20px 50px rgba(0,0,0,0.6);
@@ -246,7 +272,7 @@
         height: 100%;
     }
 
-    /* スクリーンショットセクション */
+    /* プロモーション画像 */
     .screens-panel {
         background: rgba(255,255,255,0.02);
         border: 1px solid var(--border-color);
@@ -258,28 +284,23 @@
         gap: 16px;
     }
 
+    /* プロモーション画像3枚を横一列に配置 */
     .screens-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    @media (min-width: 480px) {
-        .screens-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
     }
 
     .thumb {
         position: relative;
         background: var(--thumb-bg);
-        border-radius: var(--radius);
+        border-radius: 12px;
         border: 1px solid var(--border-color);
         box-shadow: 0 16px 32px rgba(0,0,0,0.7);
         overflow: hidden;
         cursor: pointer;
         width: 100%;
-        aspect-ratio: 9 / 16; /* 세로 스크린샷 비율 */
+        aspect-ratio: 9 / 16;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -293,23 +314,28 @@
     }
 
     .thumb::after {
-        content: "タップで拡大表示";
+        content: "拡大表示";
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+        background:
+            linear-gradient(
+                to top,
+                rgba(0,0,0,0.75),
+                transparent 70%
+            );
         color: #fff;
-        font-size: 0.7rem;
+        font-size: 0.62rem;
         line-height: 1.2;
         text-align: center;
-        padding: 8px 4px;
+        padding: 8px 2px 6px;
         letter-spacing: -0.02em;
         font-weight: 500;
         pointer-events: none;
     }
 
-    /* モーダル（全画面画像ビューア・説明ビューア共通） */
+    /* モーダル共通 */
     .modal-backdrop {
         position: fixed;
         inset: 0;
@@ -362,7 +388,7 @@
         transform: scale(0.96);
     }
 
-    /* 説明モーダル専用 */
+    /* ゲーム紹介モーダル */
     .desc-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -383,11 +409,10 @@
     .desc-inner p {
         font-size: 0.85rem;
         color: var(--text-dim);
-        line-height: 1.6;
+        line-height: 1.7;
         white-space: pre-line;
     }
 
-    /* 小さなフッターメッセージ */
     .footer-note {
         font-size: 0.7rem;
         color: var(--text-dim);
@@ -397,49 +422,85 @@
     }
 </style>
 </head>
+
 <body>
 
 <div class="page-wrap">
 
-    <!-- ヘッダー（ブランド・タイトル・アイコン） -->
+    <!-- ブランド / ゲームタイトル / アイコン -->
     <header class="brand-block">
-        <div class="brand-name">Fun And Study</div>
+        <div class="brand-name">
+            Fun And Study
+        </div>
 
         <div class="game-identity">
-            <img class="game-icon" src="../images/Hero Hunmin - English Icon.png" alt="Hero Hunmin アイコン" />
 
-            <div class="game-title">Hero Hunmin：ローグライク英語学習ゲーム</div>
-            <div class="game-sub">
-                ゲームを遊んでいるうちに英語力がぐんぐんアップ！<br/>
-                新感覚ローグライク英語学習ゲーム。
+            <!-- RougeMin共通アイコン -->
+            <img
+                class="game-icon"
+                src="../images/RougeMin - English Icon.png"
+                alt="RougeMin アイコン"
+            />
+
+            <div class="game-title">
+                RougeMin：ローグライク英語学習ゲーム
             </div>
 
-            <button type="button" class="link-btn desc-btn" id="openDesc">
+            <div class="game-sub">
+                ゲームは楽しく、英語は自然に
+            </div>
+
+            <button
+                type="button"
+                class="link-btn desc-btn"
+                id="openDesc"
+            >
                 ゲーム紹介を詳しく見る
             </button>
         </div>
     </header>
 
-    <!-- アクションボタンエリア（ポリシー／アカウント削除） -->
+    <!-- ゲーム情報およびポリシー -->
     <section class="actions-panel">
-        <div class="actions-title">ゲーム情報・ポリシー</div>
+        <div class="actions-title">
+            ゲーム情報およびポリシー
+        </div>
 
         <div class="btn-list">
-            <a class="link-btn" href="../privacy.html">
-                <div class="main-line">プライバシーポリシー</div>
-                <div class="sub-line">Hero Hunmin のプライバシーポリシーページへ移動します。</div>
+            <a
+                class="link-btn"
+                href="../privacy.html"
+            >
+                <div class="main-line">
+                    プライバシーポリシー
+                </div>
+
+                <div class="sub-line">
+                    RougeMinのプライバシーポリシーページへ移動します。
+                </div>
             </a>
 
-            <a class="link-btn" href="../account-deletion.html">
-                <div class="main-line">アカウント削除のご案内</div>
-                <div class="sub-line">Hero Hunmin のアカウントおよびデータの削除方法をご案内します。</div>
+            <a
+                class="link-btn"
+                href="../account-deletion.html"
+            >
+                <div class="main-line">
+                    アカウント削除について
+                </div>
+
+                <div class="sub-line">
+                    RougeMinのアカウントおよびデータの削除方法をご案内します。
+                </div>
             </a>
         </div>
     </section>
 
-    <!-- ストアリンク（Play Store / App Store） -->
+    <!-- ストアリンク -->
     <section class="store-panel">
-        <div class="section-heading">ストアリンク</div>
+        <div class="section-heading">
+            ストアリンク
+        </div>
+
         <div class="store-links">
             <a
                 class="link-btn"
@@ -447,70 +508,97 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <div class="main-line">Google Play Store</div>
-                <div class="sub-line">Android 版をダウンロード</div>
+                <div class="main-line">
+                    Google Play Store
+                </div>
+
+                <div class="sub-line">
+                    Android版をダウンロード
+                </div>
             </a>
 
             <a
                 class="link-btn"
-                href="https://apps.apple.com/kr/app/hero-hunmin-%EB%A1%9C%EA%B7%B8%EB%9D%BC%EC%9D%B4%ED%81%AC-%EC%98%81%EC%96%B4-%ED%95%99%EC%8A%B5-%EA%B2%8C%EC%9E%84/id6754667621"
+                href="https://apps.apple.com/kr/app/id6754667621"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <div class="main-line">Apple App Store</div>
-                <div class="sub-line">iOS 版をダウンロード</div>
+                <div class="main-line">
+                    Apple App Store
+                </div>
+
+                <div class="sub-line">
+                    iOS版をダウンロード
+                </div>
             </a>
         </div>
     </section>
 
-    <!-- ゲーム動画（縦型） -->
+    <!-- ゲームプレイ動画 -->
     <section class="video-panel">
-        <div class="section-heading">ゲームプレイ動画</div>
+        <div class="section-heading">
+            ゲームプレイ動画
+        </div>
 
         <div class="video-wrapper">
+            <!-- 動画IDはyoutube-config.jsから取得 -->
             <iframe
-                src="https://www.youtube.com/embed/SgGiZ_Mvy44"
-                title="Hero Hunmin Gameplay"
+                id="gameVideo"
+                title="RougeMin ゲームプレイ動画"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
+                allowfullscreen
+            >
             </iframe>
         </div>
 
         <div class="footer-note">
-            縦長画面の実際のゲームプレイ動画です。<br/>
-            実際のゲーム内容はアップデートにより変更される場合があります。
+            縦型の実際のゲームプレイ動画です。<br />
+            ゲーム内容はアップデートにより変更される場合があります。
         </div>
     </section>
 
-    <!-- スクリーンショットギャラリー -->
+    <!-- ゲームプロモーション画像 -->
     <section class="screens-panel">
-        <div class="section-heading">ゲームスクリーンショット</div>
+        <div class="section-heading">
+            ゲームプロモーション画像
+        </div>
 
         <div class="screens-grid">
-            <div class="thumb" data-img="../images/iPhone_Berserk_GamePlay_02.jpg">
-                <img src="../images/iPhone_Berserk_GamePlay_02.jpg" alt="スクリーンショット 1"/>
+
+            <!-- 1：ゲームプロモーション画像 -->
+            <div
+                class="thumb"
+                data-img="../images/promo-japanese-01-game.png"
+            >
+                <img
+                    src="../images/promo-japanese-01-game.png"
+                    alt="ゲームプロモーション画像"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_GameQuiz_01.jpg" alt="スクリーンショット 2"/>
+            <!-- 2：ゲームクイズプロモーション画像 -->
+            <div
+                class="thumb"
+                data-img="../images/promo-japanese-02-game-quiz.png"
+            >
+                <img
+                    src="../images/promo-japanese-02-game-quiz.png"
+                    alt="ゲームクイズのプロモーション画像"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_02.jpg">
-                <img src="../images/iPhone_Berserk_GameQuiz_02.jpg" alt="スクリーンショット 3"/>
+            <!-- 3：文章クイズプロモーション画像 -->
+            <div
+                class="thumb"
+                data-img="../images/promo-japanese-03-sentence-quiz.png"
+            >
+                <img
+                    src="../images/promo-japanese-03-sentence-quiz.png"
+                    alt="文章クイズのプロモーション画像"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg" alt="スクリーンショット 4"/>
-            </div>
-
-            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg">
-                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg" alt="スクリーンショット 5"/>
-            </div>
-
-            <div class="thumb" data-img="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg" alt="スクリーンショット 6"/>
-            </div>
         </div>
 
         <div class="footer-note">
@@ -520,109 +608,185 @@
 
     <!-- カスタマーサポート -->
     <section class="actions-panel">
-        <div class="actions-title">カスタマーサポート</div>
+        <div class="actions-title">
+            カスタマーサポート
+        </div>
+
         <div class="btn-list">
-            <a class="link-btn" href="mailto:meteor666a@gmail.com?subject=Hero%20Hunmin%20カスタマーサポートお問い合わせ&body=こんにちは。%0D%0A%0D%0A下記の項目に沿って、できるだけ詳しくご記入ください。%0D%0A- お問い合わせの種類（不具合、使いにくい点、機能要望など）：%0D%0A- ご利用端末（OS、機種名）：%0D%0A- 発生した状況の説明：%0D%0A%0D%0Aありがとうございます。">
-                <div class="main-line">お問い合わせメール： meteor666a@gmail.com</div>
-                <div class="sub-line">不具合報告、ご要望、その他のお問い合わせはメールでお送りください。</div>
+            <a
+                class="link-btn"
+                href="mailto:meteor666a@gmail.com?subject=RougeMin%20カスタマーサポートへのお問い合わせ&body=こんにちは。%0D%0A%0D%0A以下の項目を参考に、お問い合わせ内容を詳しくご記入ください。%0D%0A-%20お問い合わせの種類（不具合、不便な点、機能の提案など）：%0D%0A-%20ご利用の端末（OS、機種名）：%0D%0A-%20発生した状況の詳細：%0D%0A%0D%0Aよろしくお願いいたします。"
+            >
+                <div class="main-line">
+                    お問い合わせ：meteor666a@gmail.com
+                </div>
+
+                <div class="sub-line">
+                    不具合の報告、改善のご要望、その他のお問い合わせをメールでお送りください。
+                </div>
             </a>
         </div>
+
         <div class="footer-note">
-            できるだけ早くご返信いたします。<br/>
+            できる限り早くご返信いたします。<br />
             © 2025 Fun And Study. All rights reserved.
         </div>
     </section>
 
 </div>
 
-<!-- フルスクリーン画像ビューア -->
-<div class="modal-backdrop" id="imgModal">
+<!-- 全画面画像ビューアー -->
+<div
+    class="modal-backdrop"
+    id="imgModal"
+>
     <div class="modal-inner">
-        <img id="modalImage" src="" alt="スクリーンショットプレビュー"/>
-        <button class="modal-close" id="modalCloseImg">✕ 閉じる</button>
+        <img
+            id="modalImage"
+            src=""
+            alt="プロモーション画像のプレビュー"
+        />
+
+        <button
+            type="button"
+            class="modal-close"
+            id="modalCloseImg"
+        >
+            ✕ 閉じる
+        </button>
     </div>
 </div>
 
-<!-- ゲーム説明モーダル -->
-<div class="modal-backdrop" id="descModal">
+<!-- ゲーム紹介モーダル -->
+<div
+    class="modal-backdrop"
+    id="descModal"
+>
     <div class="modal-inner desc-inner">
-        <button class="modal-close" id="modalCloseDesc">✕ 閉じる</button>
-        <h2>ゲーム紹介</h2>
+
+        <button
+            type="button"
+            class="modal-close"
+            id="modalCloseDesc"
+        >
+            ✕ 閉じる
+        </button>
+
+        <h2>
+            ゲーム紹介
+        </h2>
+
         <p>
-ローグライクならではのスリリングな戦闘と成長に、英語学習を完璧に融合しました！
-絶え間ない挑戦で勇者を育て、
-宝箱を開けて自分だけのビルドを完成させましょう。
-英語クイズに正解するとクールタイムが短くなり、クイズバフが発動します！
+プレイするだけで、英単語や英文を繰り返し見て、聞いて、声に出すことができるローグライク英語学習ゲームです。
 
-頭にしっかり残る学習システム
- ・詰め込みではなく、「聞く・話す・クイズで解く」アウトプット中心の英語学習！
- ・2万文以上、3万語以上の膨大なデータベース！
- ・文で学ぶことで、記憶の持続と実際の活用により効果的！
- ・気になる単語は検索して、その場で例文と一緒に学習！
+方言も、本だけで学ぶより、現地で何度も聞いてまねするほうが自然に身につきます。英語も同じように、繰り返し聞いて話すことで、正確で自然な発音や表現に少しずつ慣れていきます。
 
-世界中の英語を詰め込んだ、終わりのないコンテンツ
- ・基礎からしっかり！［日常会話］
- ・趣味も英語で！［旅行・サッカー・ファッション・自動車・フィットネス・ポップソング］
- ・知的な会話のために［ギリシャ・ローマ神話・世界文化・経済用語］
- ・偉人から学ぶ！［リンカーン］
- ・ゲームでゲームを学ぶ！［DAVE THE DIVER（序盤の内容を収録）］
- ・未来のための IT 英語！
-    - ［Excel］仕事で役立つ主要関数・統計関数をマスター！
-    - ［Unity］ゲーム開発の基礎、エディターと C# 関数を攻略！
-    - ［コーディング］C#・Python・JAVA のコア概念を学ぶ！
+2万語の英単語と3万の英文を用意しました。学びたい単語を検索し、その単語が使われている文章で学習できます。日常英会話や旅行英語など、さまざまなコンテンツも提供しています。
 
-いちばん楽しい英語学習を、今すぐスタート！
-ゲームを楽しんでいるうちに、いつの間にか英語力がぐんぐんアップ！
-さあ、今すぐ Hero Hunmin の世界へ！
+ニュース、本、メディア、洋楽の歌詞などのテキストを貼り付けると、英語学習に適した文章を自動的に構成します。
+
+ゲームは楽しく、英語は自然に。
         </p>
     </div>
 </div>
 
-<script>
-    // 画像拡大モーダルのロジック
-    const imgModal = document.getElementById('imgModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalCloseImg = document.getElementById('modalCloseImg');
+<!-- mainフォルダーにある共通YouTube設定ファイル -->
+<script src="../youtube-config.js"></script>
 
-    document.querySelectorAll('.thumb').forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            const imgPath = thumb.getAttribute('data-img');
+<script>
+    /*
+        youtube-config.jsの例：
+
+        window.ROUGEMIN_YOUTUBE_VIDEO_ID = "cHKZaiQ3miA";
+    */
+
+    // 共通YouTube動画IDを適用
+    const gameVideo = document.getElementById("gameVideo");
+
+    if (
+        gameVideo &&
+        window.ROUGEMIN_YOUTUBE_VIDEO_ID
+    ) {
+        gameVideo.src =
+            "https://www.youtube.com/embed/" +
+            window.ROUGEMIN_YOUTUBE_VIDEO_ID;
+    }
+
+    // 画像拡大モーダルの要素
+    const imgModal = document.getElementById("imgModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalCloseImg = document.getElementById("modalCloseImg");
+
+    // すべてのプロモーション画像にクリックイベントを設定
+    document.querySelectorAll(".thumb").forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+            const imgPath = thumb.getAttribute("data-img");
+
             modalImage.src = imgPath;
-            imgModal.style.display = 'flex';
+            imgModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
         });
     });
 
-    modalCloseImg.addEventListener('click', () => {
-        imgModal.style.display = 'none';
-        modalImage.src = '';
-    });
+    // 画像モーダルを閉じる
+    function closeImageModal() {
+        imgModal.style.display = "none";
+        modalImage.src = "";
+        document.body.style.overflow = "";
+    }
 
-    imgModal.addEventListener('click', (e) => {
-        if (e.target === imgModal) {
-            imgModal.style.display = 'none';
-            modalImage.src = '';
+    modalCloseImg.addEventListener(
+        "click",
+        closeImageModal
+    );
+
+    // 黒い背景をクリックしても閉じる
+    imgModal.addEventListener("click", (event) => {
+        if (event.target === imgModal) {
+            closeImageModal();
         }
     });
 
-    // ゲーム説明モーダルのロジック
-    const descModal = document.getElementById('descModal');
-    const openDescBtn = document.getElementById('openDesc');
-    const modalCloseDesc = document.getElementById('modalCloseDesc');
+    // ゲーム紹介モーダルの要素
+    const descModal = document.getElementById("descModal");
+    const openDescBtn = document.getElementById("openDesc");
+    const modalCloseDesc = document.getElementById("modalCloseDesc");
 
-    openDescBtn.addEventListener('click', () => {
-        descModal.style.display = 'flex';
+    // ゲーム紹介を開く
+    openDescBtn.addEventListener("click", () => {
+        descModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
     });
 
-    modalCloseDesc.addEventListener('click', () => {
-        descModal.style.display = 'none';
-    });
+    // ゲーム紹介を閉じる
+    function closeDescriptionModal() {
+        descModal.style.display = "none";
+        document.body.style.overflow = "";
+    }
 
-    descModal.addEventListener('click', (e) => {
-        if (e.target === descModal) {
-            descModal.style.display = 'none';
+    modalCloseDesc.addEventListener(
+        "click",
+        closeDescriptionModal
+    );
+
+    // 黒い背景をクリックしても閉じる
+    descModal.addEventListener("click", (event) => {
+        if (event.target === descModal) {
+            closeDescriptionModal();
         }
+    });
+
+    // ESCキーで開いているモーダルを閉じる
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") {
+            return;
+        }
+
+        closeImageModal();
+        closeDescriptionModal();
     });
 </script>
 
 </body>
 </html>
+```
