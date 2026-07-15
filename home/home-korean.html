@@ -281,19 +281,18 @@
     }
 
     /*
-        홍보 이미지가 4장이므로 2열로 표시합니다.
-        기존 3열 표시보다 이미지가 크게 보입니다.
+        홍보 이미지 3장을 한 줄에 가로로 정렬합니다.
     */
     .screens-grid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
     }
 
     .thumb {
         position: relative;
         background: var(--thumb-bg);
-        border-radius: var(--radius);
+        border-radius: 12px;
         border: 1px solid var(--border-color);
         box-shadow: 0 16px 32px rgba(0,0,0,0.7);
         overflow: hidden;
@@ -313,7 +312,7 @@
     }
 
     .thumb::after {
-        content: "눌러서 크게 보기";
+        content: "크게 보기";
         position: absolute;
         left: 0;
         right: 0;
@@ -321,14 +320,14 @@
         background:
             linear-gradient(
                 to top,
-                rgba(0,0,0,0.7),
-                transparent 60%
+                rgba(0,0,0,0.75),
+                transparent 70%
             );
         color: #fff;
-        font-size: 0.7rem;
+        font-size: 0.62rem;
         line-height: 1.2;
         text-align: center;
-        padding: 8px 4px;
+        padding: 8px 2px 6px;
         letter-spacing: -0.02em;
         font-weight: 500;
         pointer-events: none;
@@ -434,13 +433,10 @@
 
         <div class="game-identity">
 
-            <!--
-                아이콘 파일 이름은 기존 파일을 그대로 사용합니다.
-                아이콘 파일 이름도 바꿨다면 src 주소만 수정하면 됩니다.
-            -->
+            <!-- 변경된 RougeMin 아이콘 파일 -->
             <img
                 class="game-icon"
-                src="../images/Hero Hunmin - English Icon.png"
+                src="../images/RougeMin - English Icon.png"
                 alt="RougeMin 아이콘"
             />
 
@@ -543,11 +539,7 @@
         </div>
 
         <div class="video-wrapper">
-
-            <!--
-                영상 주소는 youtube-config.js에서 가져옵니다.
-                iframe에는 직접 유튜브 주소를 넣지 않습니다.
-            -->
+            <!-- 영상 ID는 youtube-config.js에서 가져옵니다. -->
             <iframe
                 id="gameVideo"
                 title="RougeMin Gameplay"
@@ -570,53 +562,42 @@
             게임 홍보 이미지
         </div>
 
-<div class="screens-grid">
+        <div class="screens-grid">
 
-    <!-- 홍보 이미지 1 -->
-    <div
-        class="thumb"
-        data-img="../images/promo-korean-01.png"
-    >
-        <img
-            src="../images/promo-korean-01.png"
-            alt="게임 홍보 이미지 1"
-        />
-    </div>
+            <!-- 1번: 게임 홍보 이미지 -->
+            <div
+                class="thumb"
+                data-img="../images/promo-korean-01-game.png"
+            >
+                <img
+                    src="../images/promo-korean-01-game.png"
+                    alt="게임 홍보 이미지"
+                />
+            </div>
 
-    <!-- 홍보 이미지 2 -->
-    <div
-        class="thumb"
-        data-img="../images/promo-korean-02-word-quiz.png"
-    >
-        <img
-            src="../images/promo-korean-02-word-quiz.png"
-            alt="영단어 퀴즈 홍보 이미지"
-        />
-    </div>
+            <!-- 2번: 게임 퀴즈 홍보 이미지 -->
+            <div
+                class="thumb"
+                data-img="../images/promo-korean-02-game-quiz.png"
+            >
+                <img
+                    src="../images/promo-korean-02-game-quiz.png"
+                    alt="게임 퀴즈 홍보 이미지"
+                />
+            </div>
 
-    <!-- 홍보 이미지 3 -->
-    <div
-        class="thumb"
-        data-img="../images/promo-korean-03-sentence-quiz.png"
-    >
-        <img
-            src="../images/promo-korean-03-sentence-quiz.png"
-            alt="문장 퀴즈 홍보 이미지"
-        />
-    </div>
+            <!-- 3번: 문장 퀴즈 홍보 이미지 -->
+            <div
+                class="thumb"
+                data-img="../images/promo-korean-03-sentence-quiz.png"
+            >
+                <img
+                    src="../images/promo-korean-03-sentence-quiz.png"
+                    alt="문장 퀴즈 홍보 이미지"
+                />
+            </div>
 
-    <!-- 홍보 이미지 4 -->
-    <div
-        class="thumb"
-        data-img="../images/Sacred_InGame_ProtectBuff.png"
-    >
-        <img
-            src="../images/Sacred_InGame_ProtectBuff.png"
-            alt="게임 플레이 홍보 이미지"
-        />
-    </div>
-
-</div>
+        </div>
 
         <div class="footer-note">
             이미지를 누르면 크게 볼 수 있습니다.
@@ -658,7 +639,6 @@
     id="imgModal"
 >
     <div class="modal-inner">
-
         <img
             id="modalImage"
             src=""
@@ -708,22 +688,17 @@
     </div>
 </div>
 
-<!--
-    main 폴더에 있는 공통 유튜브 설정 파일을 불러옵니다.
-
-    현재 HTML은 home 폴더 안에 있으므로
-    ../youtube-config.js 경로를 사용합니다.
--->
+<!-- main 폴더에 있는 공통 유튜브 설정 파일 -->
 <script src="../youtube-config.js"></script>
 
 <script>
     /*
-        youtube-config.js의 영상 ID를 iframe에 적용합니다.
-
         youtube-config.js 예시:
 
         window.ROUGEMIN_YOUTUBE_VIDEO_ID = "cHKZaiQ3miA";
     */
+
+    // 공통 유튜브 영상 ID 적용
     const gameVideo = document.getElementById("gameVideo");
 
     if (
@@ -740,15 +715,13 @@
     const modalImage = document.getElementById("modalImage");
     const modalCloseImg = document.getElementById("modalCloseImg");
 
-    // 모든 홍보 이미지에 클릭 이벤트 연결
+    // 모든 홍보 이미지 클릭 이벤트
     document.querySelectorAll(".thumb").forEach((thumb) => {
         thumb.addEventListener("click", () => {
             const imgPath = thumb.getAttribute("data-img");
 
             modalImage.src = imgPath;
             imgModal.style.display = "flex";
-
-            // 모달이 열렸을 때 배경 페이지의 스크롤을 막습니다.
             document.body.style.overflow = "hidden";
         });
     });
@@ -760,10 +733,12 @@
         document.body.style.overflow = "";
     }
 
-    // 이미지 닫기 버튼
-    modalCloseImg.addEventListener("click", closeImageModal);
+    modalCloseImg.addEventListener(
+        "click",
+        closeImageModal
+    );
 
-    // 이미지 바깥의 검은 배경을 눌러도 닫기
+    // 검은 배경을 눌러도 닫기
     imgModal.addEventListener("click", (event) => {
         if (event.target === imgModal) {
             closeImageModal();
@@ -778,31 +753,28 @@
     // 게임 소개 열기
     openDescBtn.addEventListener("click", () => {
         descModal.style.display = "flex";
-
-        // 모달이 열렸을 때 배경 페이지의 스크롤을 막습니다.
         document.body.style.overflow = "hidden";
     });
 
-    // 게임 소개 모달 닫기
+    // 게임 소개 닫기
     function closeDescriptionModal() {
         descModal.style.display = "none";
         document.body.style.overflow = "";
     }
 
-    // 게임 소개 닫기 버튼
     modalCloseDesc.addEventListener(
         "click",
         closeDescriptionModal
     );
 
-    // 설명 바깥의 검은 배경을 눌러도 닫기
+    // 검은 배경을 눌러도 닫기
     descModal.addEventListener("click", (event) => {
         if (event.target === descModal) {
             closeDescriptionModal();
         }
     });
 
-    // 키보드 ESC 버튼으로 열린 모달 닫기
+    // ESC 키로 열린 모달 닫기
     document.addEventListener("keydown", (event) => {
         if (event.key !== "Escape") {
             return;
