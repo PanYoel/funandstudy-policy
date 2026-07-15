@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fun And Study - Hero Hunmin</title>
+
+<title>Fun And Study - RougeMin</title>
+
 <style>
     :root {
         --bg-color: #0f172a;
@@ -26,10 +28,23 @@
 
     body {
         margin: 0;
-        background: radial-gradient(circle at 20% 20%, #1e2538 0%, #0f172a 60%);
+        background:
+            radial-gradient(
+                circle at 20% 20%,
+                #1e2538 0%,
+                #0f172a 60%
+            );
         background-color: var(--bg-color);
         color: var(--text-main);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", Roboto, "Noto Sans", "Segoe UI", sans-serif;
+        font-family:
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Inter",
+            Roboto,
+            "Noto Sans",
+            "Segoe UI",
+            sans-serif;
         line-height: 1.5;
         display: flex;
         justify-content: center;
@@ -45,7 +60,7 @@
         position: relative;
     }
 
-    /* 헤더(브랜드+제목+아이콘) */
+    /* 브랜드, 게임 제목, 아이콘 */
     .brand-block {
         display: flex;
         flex-direction: column;
@@ -100,7 +115,7 @@
         text-align: center;
     }
 
-    /* 버튼 섹션 */
+    /* 공통 버튼 패널 */
     .actions-panel {
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--border-color);
@@ -132,7 +147,12 @@
         appearance: none;
         border: 0;
         border-radius: var(--radius);
-        background: linear-gradient(145deg, rgba(79,70,229,0.18) 0%, rgba(79,70,229,0) 60%);
+        background:
+            linear-gradient(
+                145deg,
+                rgba(79,70,229,0.18) 0%,
+                rgba(79,70,229,0) 60%
+            );
         border: 1px solid rgba(255,255,255,0.1);
         box-shadow: var(--shadow-button);
         color: var(--text-main);
@@ -146,6 +166,7 @@
         flex-direction: column;
         gap: 4px;
         position: relative;
+        cursor: pointer;
     }
 
     .link-btn .main-line {
@@ -175,7 +196,7 @@
         align-self: stretch;
     }
 
-    /* 스토어 링크 섹션 */
+    /* 스토어 링크 */
     .store-panel {
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--border-color);
@@ -204,7 +225,16 @@
         }
     }
 
-    /* 비디오 영역 (세로 영상용) */
+    /* 공통 섹션 제목 */
+    .section-heading {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-dim);
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+
+    /* 유튜브 영상 */
     .video-panel {
         background: rgba(255,255,255,0.02);
         border: 1px solid var(--border-color);
@@ -216,19 +246,11 @@
         gap: 16px;
     }
 
-    .section-heading {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--text-dim);
-        text-align: center;
-        letter-spacing: -0.02em;
-    }
-
     .video-wrapper {
         position: relative;
         width: 100%;
         max-width: 360px;
-        aspect-ratio: 9 / 16; /* 세로 영상 비율 */
+        aspect-ratio: 9 / 16;
         border-radius: var(--radius);
         overflow: hidden;
         box-shadow: 0 20px 50px rgba(0,0,0,0.6);
@@ -246,7 +268,7 @@
         height: 100%;
     }
 
-    /* 스크린샷 섹션 */
+    /* 홍보 이미지 */
     .screens-panel {
         background: rgba(255,255,255,0.02);
         border: 1px solid var(--border-color);
@@ -258,28 +280,25 @@
         gap: 16px;
     }
 
+    /*
+        홍보 이미지 3장을 한 줄에 가로로 정렬합니다.
+    */
     .screens-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    @media (min-width: 480px) {
-        .screens-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
     }
 
     .thumb {
         position: relative;
         background: var(--thumb-bg);
-        border-radius: var(--radius);
+        border-radius: 12px;
         border: 1px solid var(--border-color);
         box-shadow: 0 16px 32px rgba(0,0,0,0.7);
         overflow: hidden;
         cursor: pointer;
         width: 100%;
-        aspect-ratio: 9 / 16; /* 세로 스크린샷 비율 */
+        aspect-ratio: 9 / 16;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -293,23 +312,28 @@
     }
 
     .thumb::after {
-        content: "Нажмите, чтобы увеличить";
+        content: "Увеличить";
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+        background:
+            linear-gradient(
+                to top,
+                rgba(0,0,0,0.75),
+                transparent 70%
+            );
         color: #fff;
-        font-size: 0.7rem;
+        font-size: 0.62rem;
         line-height: 1.2;
         text-align: center;
-        padding: 8px 4px;
+        padding: 8px 2px 6px;
         letter-spacing: -0.02em;
         font-weight: 500;
         pointer-events: none;
     }
 
-    /* 모달(풀스크린 이미지 뷰어, 설명 뷰어 공통) */
+    /* 모달 공통 */
     .modal-backdrop {
         position: fixed;
         inset: 0;
@@ -362,7 +386,7 @@
         transform: scale(0.96);
     }
 
-    /* 설명 모달 전용 */
+    /* 게임 설명 모달 */
     .desc-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -387,7 +411,6 @@
         white-space: pre-line;
     }
 
-    /* 작은 푸터 느낌으로 간단 안내 */
     .footer-note {
         font-size: 0.7rem;
         color: var(--text-dim);
@@ -397,49 +420,85 @@
     }
 </style>
 </head>
+
 <body>
 
 <div class="page-wrap">
 
-    <!-- 브랜드 / 타이틀 / 아이콘 -->
+    <!-- 브랜드 / 게임 제목 / 아이콘 -->
     <header class="brand-block">
-        <div class="brand-name">Fun And Study</div>
+        <div class="brand-name">
+            Fun And Study
+        </div>
 
         <div class="game-identity">
-            <img class="game-icon" src="../images/Hero Hunmin - English Icon.png" alt="Значок Hero Hunmin" />
 
-            <div class="game-title">Hero Hunmin: игра для изучения английского в жанре roguelike</div>
-            <div class="game-sub">
-                Чем больше играете, тем лучше становится ваш английский!<br/>
-                Принципиально новый формат обучения английскому в стиле roguelike.
+            <!-- 변경된 RougeMin 아이콘 파일 -->
+            <img
+                class="game-icon"
+                src="../images/RougeMin - English Icon.png"
+                alt="Иконка RougeMin"
+            />
+
+            <div class="game-title">
+                RougeMin: Рогалик-игра для изучения английского языка
             </div>
 
-            <button type="button" class="link-btn desc-btn" id="openDesc">
+            <div class="game-sub">
+                Развлекайтесь в игре, учите английский естественно
+            </div>
+
+            <button
+                type="button"
+                class="link-btn desc-btn"
+                id="openDesc"
+            >
                 Подробнее об игре
             </button>
         </div>
     </header>
 
-    <!-- 액션 버튼 영역 (정책/계정 삭제) -->
+    <!-- 게임 정보 및 정책 -->
     <section class="actions-panel">
-        <div class="actions-title">Информация об игре и политика</div>
+        <div class="actions-title">
+            Информация об игре и правила
+        </div>
 
         <div class="btn-list">
-            <a class="link-btn" href="../privacy.html">
-                <div class="main-line">Политика конфиденциальности</div>
-                <div class="sub-line">Переход на страницу политики конфиденциальности Hero Hunmin.</div>
+            <a
+                class="link-btn"
+                href="../privacy.html"
+            >
+                <div class="main-line">
+                    Политика конфиденциальности
+                </div>
+
+                <div class="sub-line">
+                    Перейти на страницу политики конфиденциальности RougeMin.
+                </div>
             </a>
 
-            <a class="link-btn" href="../account-deletion.html">
-                <div class="main-line">Инструкция по удалению аккаунта</div>
-                <div class="sub-line">Объяснение, как удалить аккаунт и данные Hero Hunmin.</div>
+            <a
+                class="link-btn"
+                href="../account-deletion.html"
+            >
+                <div class="main-line">
+                    Удаление аккаунта
+                </div>
+
+                <div class="sub-line">
+                    Инструкции по удалению аккаунта и данных RougeMin.
+                </div>
             </a>
         </div>
     </section>
 
-    <!-- 스토어 링크 (Play Store / App Store) -->
+    <!-- 스토어 링크 -->
     <section class="store-panel">
-        <div class="section-heading">Ссылки на магазины</div>
+        <div class="section-heading">
+            Ссылки на магазины
+        </div>
+
         <div class="store-links">
             <a
                 class="link-btn"
@@ -447,88 +506,127 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <div class="main-line">Google Play Store</div>
-                <div class="sub-line">Скачать версию для Android</div>
+                <div class="main-line">
+                    Google Play Store
+                </div>
+
+                <div class="sub-line">
+                    Скачать версию для Android
+                </div>
             </a>
 
             <a
                 class="link-btn"
-                href="https://apps.apple.com/kr/app/hero-hunmin-%EB%A1%9C%EA%B7%B8%EB%9D%BC%EC%9D%B4%ED%81%AC-%EC%98%81%EC%96%B4-%ED%95%99%EC%8A%B5-%EA%B2%8C%EC%9E%84/id6754667621"
+                href="https://apps.apple.com/kr/app/id6754667621"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <div class="main-line">Apple App Store</div>
-                <div class="sub-line">Скачать версию для iOS</div>
+                <div class="main-line">
+                    Apple App Store
+                </div>
+
+                <div class="sub-line">
+                    Скачать версию для iOS
+                </div>
             </a>
         </div>
     </section>
 
-    <!-- 게임 영상 (세로) -->
+    <!-- 게임 플레이 영상 -->
     <section class="video-panel">
-        <div class="section-heading">Видео игрового процесса</div>
+        <div class="section-heading">
+            Геймплейное видео
+        </div>
 
         <div class="video-wrapper">
+            <!-- 영상 ID는 youtube-config.js에서 가져옵니다. -->
             <iframe
-                src="https://www.youtube.com/embed/SgGiZ_Mvy44"
-                title="Hero Hunmin Gameplay"
+                id="gameVideo"
+                title="RougeMin Gameplay"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
+                allowfullscreen
+            >
             </iframe>
         </div>
 
         <div class="footer-note">
-            Это реальный геймплей в вертикальном формате.<br/>
-            Фактическое содержимое игры может меняться с выходом обновлений.
+            Реальная запись игрового процесса в вертикальном формате.<br />
+            Содержимое игры может меняться в зависимости от будущих обновлений.
         </div>
     </section>
 
-    <!-- 스크린샷 갤러리 -->
+    <!-- 게임 홍보 이미지 -->
     <section class="screens-panel">
-        <div class="section-heading">Скриншоты игры</div>
+        <div class="section-heading">
+            Промо-изображения игры
+        </div>
 
         <div class="screens-grid">
-            <div class="thumb" data-img="../images/iPhone_Berserk_GamePlay_02.jpg">
-                <img src="../images/iPhone_Berserk_GamePlay_02.jpg" alt="Скриншот 1"/>
+
+            <!-- 1번: 게임 홍보 이미지 -->
+            <div
+                class="thumb"
+                data-img="../images/promo-russian-01-game.png"
+            >
+                <img
+                    src="../images/promo-russian-01-game.png"
+                    alt="Игровое промо-изображение"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_GameQuiz_01.jpg" alt="Скриншот 2"/>
+            <!-- 2번: 게임 퀴즈 홍보 이미지 -->
+            <div
+                class="thumb"
+                data-img="../images/promo-russian-02-game-quiz.png"
+            >
+                <img
+                    src="../images/promo-russian-02-game-quiz.png"
+                    alt="Промо-изображение игровых викторин"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_02.jpg">
-                <img src="../images/iPhone_Berserk_GameQuiz_02.jpg" alt="Скриншот 3"/>
+            <!-- 3번: 문장 퀴즈 홍보 이미지 -->
+            <div
+                class="thumb"
+                data-img="../images/promo-russian-03-sentence-quiz.png"
+            >
+                <img
+                    src="../images/promo-russian-03-sentence-quiz.png"
+                    alt="Промо-изображение викторины предложений"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg" alt="Скриншот 4"/>
-            </div>
-
-            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg">
-                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg" alt="Скриншот 5"/>
-            </div>
-
-            <div class="thumb" data-img="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg" alt="Скриншот 6"/>
-            </div>
         </div>
 
         <div class="footer-note">
-            Нажмите на изображение, чтобы открыть его в большем размере.
+            Нажмите на изображение, чтобы увеличить его.
         </div>
     </section>
 
-    <!-- Customer Support -->
+    <!-- 고객지원 -->
     <section class="actions-panel">
-        <div class="actions-title">Поддержка</div>
+        <div class="actions-title">
+            Служба поддержки
+        </div>
+
         <div class="btn-list">
-            <a class="link-btn" href="mailto:meteor666a@gmail.com?subject=Hero%20Hunmin%20Вопрос%20в%20службу%20поддержки&body=Здравствуйте.%0D%0A%0D%0AПожалуйста, подробно опишите свой вопрос по следующему шаблону.%0D%0A-%20Тип%20обращения%20(ошибка,%20неудобство,%20предложение%20по%20функции%20и%20т.д.):%0D%0A-%20Устройство%20(ОС,%20модель%20устройства):%0D%0A-%20Описание%20ситуации:%0D%0A%0D%0AСпасибо.">
-                <div class="main-line">Электронная почта для связи: meteor666a@gmail.com</div>
-                <div class="sub-line">Пожалуйста, отправляйте отчёты об ошибках, предложения по улучшению и любые другие вопросы на e-mail.</div>
+            <a
+                class="link-btn"
+                href="mailto:meteor666a@gmail.com?subject=RougeMin%20%D0%A1%D0%BB%D1%83%D0%B6%D0%B1%D0%B0%20%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B8&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5.%0D%0A%0D%0A%D0%9F%D0%BE%D0%B6%D0%B0%D0%BB%D1%83%D0%B9%D1%81%D1%82%D0%B0%2C%20%D0%BE%D0%BF%D0%B8%D1%88%D0%B8%D1%82%D0%B5%20%D0%B2%D0%B0%D1%88%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%83%20%D0%BD%D0%B8%D0%B6%D0%B5.%0D%0A-%20%D0%A2%D0%B8%D0%BF%20%D0%BE%D0%B1%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D1%8F%20(%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B0%2C%20%D0%BF%D1%80%D0%B5%D0%B4%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B8%20%D1%82.%D0%B4.):%0D%0A-%20%D0%A3%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE%20(%D0%9E%D0%A1%2C%20%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C):%0D%0A-%20%D0%9E%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5%20%D1%81%D0%B8%D1%82%D1%83%D0%B0%D1%86%D0%B8%D0%B8:%0D%0A%0D%0A%D0%A1%D0%BF%D0%B0%D1%81%D0%B8%D0%B1%D0%BE."
+            >
+                <div class="main-line">
+                    Email поддержки: meteor666a@gmail.com
+                </div>
+
+                <div class="sub-line">
+                    Отправляйте отчеты об ошибках, предложения по улучшению и другие вопросы на нашу электронную почту.
+                </div>
             </a>
         </div>
+
         <div class="footer-note">
-            Мы постараемся ответить как можно быстрее.<br/>
+            Мы постараемся ответить вам как можно скорее.<br />
             © 2025 Fun And Study. Все права защищены.
         </div>
     </section>
@@ -536,91 +634,154 @@
 </div>
 
 <!-- 전체 화면 이미지 뷰어 -->
-<div class="modal-backdrop" id="imgModal">
+<div
+    class="modal-backdrop"
+    id="imgModal"
+>
     <div class="modal-inner">
-        <img id="modalImage" src="" alt="Предпросмотр скриншота"/>
-        <button class="modal-close" id="modalCloseImg">✕ Закрыть</button>
+        <img
+            id="modalImage"
+            src=""
+            alt="Предпросмотр промо-изображения"
+        />
+
+        <button
+            type="button"
+            class="modal-close"
+            id="modalCloseImg"
+        >
+            ✕ Закрыть
+        </button>
     </div>
 </div>
 
-<!-- 게임 설명 모달 -->
-<div class="modal-backdrop" id="descModal">
+<!-- 게임 소개 모달 -->
+<div
+    class="modal-backdrop"
+    id="descModal"
+>
     <div class="modal-inner desc-inner">
-        <button class="modal-close" id="modalCloseDesc">✕ Закрыть</button>
-        <h2>Описание игры</h2>
+
+        <button
+            type="button"
+            class="modal-close"
+            id="modalCloseDesc"
+        >
+            ✕ Закрыть
+        </button>
+
+        <h2>
+            Описание игры
+        </h2>
+
         <p>
-Мы полностью интегрировали обучение английскому в захватывающие сражения и прокачку персонажа в жанре roguelike!
-Прокачивайте героя через бесконечные испытания,
-открывайте сундуки с сокровищами и создавайте собственный идеальный билд.
-Отвечайте правильно на викторины по английскому, чтобы сокращать время восстановления и активировать усиления от квизов!
+Рогалик-игра для изучения английского языка, в которой вы постоянно видите, слышите и повторяете слова и предложения прямо во время игрового процесса.
 
-Система обучения, которая надолго запоминается
- • Изучение английского с упором на «выход»: слушаем, говорим и закрепляем через квиз без зубрёжки!
- • Огромная база: более 20 000 предложений и 30 000 слов!
- • Обучение с помощью предложений эффективнее для длительного запоминания и практического применения!
- • Ищите интересующие слова и сразу учите их в контексте предложений!
+Так же, как при изучении местного диалекта — многократное прослушивание и повторение в живой среде работает гораздо эффективнее сухой теории из книг — частое прослушивание и воспроизведение английской речи поможет вам быстрее и естественнее привыкнуть к правильному произношению и выражениям.
 
-Весь английский мира в одном месте! Контент пополняется без остановки
- • Сначала крепкая база! [Повседневные диалоги]
- • Хобби на английском? [Путешествия, футбол, мода, автомобили, фитнес, поп-музыка]
- • Для интеллектуальных бесед! [Мифы Древней Греции и Рима, мировая культура, экономические термины]
- • Учимся у великих людей! [Линкольн]
- • Изучаем игры через игру! [DAVE THE DIVER (включены материалы из начала игры)]
- • IT-английский для будущего!
-    - [Excel] Освойте ключевые и статистические функции и станьте мастером офисной работы!
-    - [Unity] Основы разработки игр: редактор и функции C#!
-    - [Программирование] Изучайте ключевые концепции C#, Python и JAVA!
+Мы подготовили базу данных из 20 000 слов и 30 000 предложений. Вы можете искать любые интересующие вас слова, чтобы изучать их в контексте готовых фраз, а также проходить различные уроки, включая повседневный и туристический английский.
 
-Начните самое увлекательное изучение английского уже сейчас!
-Пока вы наслаждаетесь игрой, ваш английский будет стремительно расти!
-Присоединяйтесь к миру Hero Hunmin прямо сейчас!
+Если вы вставите любой текст из новостей, книг, медиа или текстов поп-песен, игра автоматически сгенерирует наиболее подходящие предложения для вашего обучения.
+
+Развлекайтесь в игре, учите английский естественно.
         </p>
     </div>
 </div>
 
-<script>
-    // 이미지 확대 모달 로직
-    const imgModal = document.getElementById('imgModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalCloseImg = document.getElementById('modalCloseImg');
+<!-- main 폴더에 있는 공통 유튜브 설정 파일 -->
+<script src="../youtube-config.js"></script>
 
-    document.querySelectorAll('.thumb').forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            const imgPath = thumb.getAttribute('data-img');
+<script>
+    /*
+        youtube-config.js 예시:
+
+        window.ROUGEMIN_YOUTUBE_VIDEO_ID = "cHKZaiQ3miA";
+    */
+
+    // 공통 유튜브 영상 ID 적용
+    const gameVideo = document.getElementById("gameVideo");
+
+    if (
+        gameVideo &&
+        window.ROUGEMIN_YOUTUBE_VIDEO_ID
+    ) {
+        gameVideo.src =
+            "https://www.youtube.com/embed/" +
+            window.ROUGEMIN_YOUTUBE_VIDEO_ID;
+    }
+
+    // 이미지 확대 모달 요소
+    const imgModal = document.getElementById("imgModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalCloseImg = document.getElementById("modalCloseImg");
+
+    // 모든 홍보 이미지 클릭 이벤트
+    document.querySelectorAll(".thumb").forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+            const imgPath = thumb.getAttribute("data-img");
+
             modalImage.src = imgPath;
-            imgModal.style.display = 'flex';
+            imgModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
         });
     });
 
-    modalCloseImg.addEventListener('click', () => {
-        imgModal.style.display = 'none';
-        modalImage.src = '';
-    });
+    // 이미지 모달 닫기
+    function closeImageModal() {
+        imgModal.style.display = "none";
+        modalImage.src = "";
+        document.body.style.overflow = "";
+    }
 
-    imgModal.addEventListener('click', (e) => {
-        if (e.target === imgModal) {
-            imgModal.style.display = 'none';
-            modalImage.src = '';
+    modalCloseImg.addEventListener(
+        "click",
+        closeImageModal
+    );
+
+    // 검은 배경을 눌러도 닫기
+    imgModal.addEventListener("click", (event) => {
+        if (event.target === imgModal) {
+            closeImageModal();
         }
     });
 
-    // 게임 설명 모달 로직
-    const descModal = document.getElementById('descModal');
-    const openDescBtn = document.getElementById('openDesc');
-    const modalCloseDesc = document.getElementById('modalCloseDesc');
+    // 게임 설명 모달 요소
+    const descModal = document.getElementById("descModal");
+    const openDescBtn = document.getElementById("openDesc");
+    const modalCloseDesc = document.getElementById("modalCloseDesc");
 
-    openDescBtn.addEventListener('click', () => {
-        descModal.style.display = 'flex';
+    // 게임 소개 열기
+    openDescBtn.addEventListener("click", () => {
+        descModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
     });
 
-    modalCloseDesc.addEventListener('click', () => {
-        descModal.style.display = 'none';
-    });
+    // 게임 소개 닫기
+    function closeDescriptionModal() {
+        descModal.style.display = "none";
+        document.body.style.overflow = "";
+    }
 
-    descModal.addEventListener('click', (e) => {
-        if (e.target === descModal) {
-            descModal.style.display = 'none';
+    modalCloseDesc.addEventListener(
+        "click",
+        closeDescriptionModal
+    );
+
+    // 검은 배경을 눌러도 닫기
+    descModal.addEventListener("click", (event) => {
+        if (event.target === descModal) {
+            closeDescriptionModal();
         }
+    });
+
+    // ESC 키로 열린 모달 닫기
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") {
+            return;
+        }
+
+        closeImageModal();
+        closeDescriptionModal();
     });
 </script>
 
