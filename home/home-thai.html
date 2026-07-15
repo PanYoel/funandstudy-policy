@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fun And Study - Hero Hunmin</title>
+
+<title>Fun And Study - RougeMin</title>
+
 <style>
     :root {
         --bg-color: #0f172a;
@@ -26,10 +28,24 @@
 
     body {
         margin: 0;
-        background: radial-gradient(circle at 20% 20%, #1e2538 0%, #0f172a 60%);
+        background:
+            radial-gradient(
+                circle at 20% 20%,
+                #1e2538 0%,
+                #0f172a 60%
+            );
         background-color: var(--bg-color);
         color: var(--text-main);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", Roboto, "Noto Sans", "Segoe UI", sans-serif;
+        font-family:
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Inter",
+            Roboto,
+            "Noto Sans Thai",
+            "Noto Sans",
+            "Segoe UI",
+            sans-serif;
         line-height: 1.5;
         display: flex;
         justify-content: center;
@@ -45,7 +61,7 @@
         position: relative;
     }
 
-    /* 헤더(브랜드+제목+아이콘) */
+    /* แบรนด์ ชื่อเกม และไอคอน */
     .brand-block {
         display: flex;
         flex-direction: column;
@@ -100,7 +116,7 @@
         text-align: center;
     }
 
-    /* 버튼 섹션 */
+    /* แผงปุ่มทั่วไป */
     .actions-panel {
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--border-color);
@@ -132,7 +148,12 @@
         appearance: none;
         border: 0;
         border-radius: var(--radius);
-        background: linear-gradient(145deg, rgba(79,70,229,0.18) 0%, rgba(79,70,229,0) 60%);
+        background:
+            linear-gradient(
+                145deg,
+                rgba(79,70,229,0.18) 0%,
+                rgba(79,70,229,0) 60%
+            );
         border: 1px solid rgba(255,255,255,0.1);
         box-shadow: var(--shadow-button);
         color: var(--text-main);
@@ -146,6 +167,7 @@
         flex-direction: column;
         gap: 4px;
         position: relative;
+        cursor: pointer;
     }
 
     .link-btn .main-line {
@@ -167,7 +189,7 @@
         transform: scale(0.98);
     }
 
-    /* 게임 설명 버튼 */
+    /* ปุ่มรายละเอียดเกม */
     .desc-btn {
         margin-top: 4px;
         padding: 10px 14px;
@@ -175,7 +197,7 @@
         align-self: stretch;
     }
 
-    /* 스토어 링크 섹션 */
+    /* ลิงก์ร้านค้า */
     .store-panel {
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--border-color);
@@ -204,7 +226,16 @@
         }
     }
 
-    /* 비디오 영역 (세로 영상용) */
+    /* หัวข้อส่วนทั่วไป */
+    .section-heading {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-dim);
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+
+    /* วิดีโอ YouTube */
     .video-panel {
         background: rgba(255,255,255,0.02);
         border: 1px solid var(--border-color);
@@ -216,19 +247,11 @@
         gap: 16px;
     }
 
-    .section-heading {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--text-dim);
-        text-align: center;
-        letter-spacing: -0.02em;
-    }
-
     .video-wrapper {
         position: relative;
         width: 100%;
         max-width: 360px;
-        aspect-ratio: 9 / 16; /* 세로 영상 비율 */
+        aspect-ratio: 9 / 16;
         border-radius: var(--radius);
         overflow: hidden;
         box-shadow: 0 20px 50px rgba(0,0,0,0.6);
@@ -246,7 +269,7 @@
         height: 100%;
     }
 
-    /* 스크린샷 섹션 */
+    /* รูปภาพประชาสัมพันธ์ */
     .screens-panel {
         background: rgba(255,255,255,0.02);
         border: 1px solid var(--border-color);
@@ -258,28 +281,25 @@
         gap: 16px;
     }
 
+    /*
+        จัดเรียงรูปภาพประชาสัมพันธ์ 3 รูปในแนวนอนหนึ่งแถว
+    */
     .screens-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    @media (min-width: 480px) {
-        .screens-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
     }
 
     .thumb {
         position: relative;
         background: var(--thumb-bg);
-        border-radius: var(--radius);
+        border-radius: 12px;
         border: 1px solid var(--border-color);
         box-shadow: 0 16px 32px rgba(0,0,0,0.7);
         overflow: hidden;
         cursor: pointer;
         width: 100%;
-        aspect-ratio: 9 / 16; /* 세로 스크린샷 비율 */
+        aspect-ratio: 9 / 16;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -293,23 +313,28 @@
     }
 
     .thumb::after {
-        content: "แตะเพื่อดูภาพขนาดใหญ่";
+        content: "ดูภาพขยาย";
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+        background:
+            linear-gradient(
+                to top,
+                rgba(0,0,0,0.75),
+                transparent 70%
+            );
         color: #fff;
-        font-size: 0.7rem;
+        font-size: 0.62rem;
         line-height: 1.2;
         text-align: center;
-        padding: 8px 4px;
+        padding: 8px 2px 6px;
         letter-spacing: -0.02em;
         font-weight: 500;
         pointer-events: none;
     }
 
-    /* 모달(풀스크린 이미지 뷰어, 설명 뷰어 공통) */
+    /* หน้าต่างป๊อปอัปทั่วไป */
     .modal-backdrop {
         position: fixed;
         inset: 0;
@@ -362,7 +387,7 @@
         transform: scale(0.96);
     }
 
-    /* 설명 모달 전용 */
+    /* หน้าต่างรายละเอียดเกม */
     .desc-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -387,7 +412,6 @@
         white-space: pre-line;
     }
 
-    /* 작은 푸터 느낌으로 간단 안내 */
     .footer-note {
         font-size: 0.7rem;
         color: var(--text-dim);
@@ -397,49 +421,85 @@
     }
 </style>
 </head>
+
 <body>
 
 <div class="page-wrap">
 
-    <!-- 브랜드 / 타이틀 / 아이콘 -->
+    <!-- แบรนด์ / ชื่อเกม / ไอคอน -->
     <header class="brand-block">
-        <div class="brand-name">Fun And Study</div>
+        <div class="brand-name">
+            Fun And Study
+        </div>
 
         <div class="game-identity">
-            <img class="game-icon" src="../images/Hero Hunmin - English Icon.png" alt="ไอคอน Hero Hunmin" />
 
-            <div class="game-title">Hero Hunmin: เกมเรียนภาษาอังกฤษสไตล์ roguelike</div>
-            <div class="game-sub">
-                ยิ่งเล่นเกม ทักษะภาษาอังกฤษยิ่งพัฒนา!<br/>
-                เรียนภาษาอังกฤษแนว roguelike คอนเซ็ปต์ใหม่หมดจด
+            <!-- ไฟล์ไอคอน RougeMin เวอร์ชันภาษาอังกฤษ -->
+            <img
+                class="game-icon"
+                src="../images/RougeMin - English Icon.png"
+                alt="ไอคอน RougeMin"
+            />
+
+            <div class="game-title">
+                RougeMin: เกมโร้กไลก์เพื่อเรียนภาษาอังกฤษ
             </div>
 
-            <button type="button" class="link-btn desc-btn" id="openDesc">
-                ดูรายละเอียดแนะนำเกม
+            <div class="game-sub">
+                สนุกกับเกม เรียนภาษาอังกฤษอย่างเป็นธรรมชาติ
+            </div>
+
+            <button
+                type="button"
+                class="link-btn desc-btn"
+                id="openDesc"
+            >
+                ดูรายละเอียดเกม
             </button>
         </div>
     </header>
 
-    <!-- 액션 버튼 영역 (정책/계정 삭제) -->
+    <!-- ข้อมูลและนโยบายของเกม -->
     <section class="actions-panel">
-        <div class="actions-title">ข้อมูลและนโยบายของเกม</div>
+        <div class="actions-title">
+            ข้อมูลและนโยบายของเกม
+        </div>
 
         <div class="btn-list">
-            <a class="link-btn" href="../privacy.html">
-                <div class="main-line">นโยบายความเป็นส่วนตัว</div>
-                <div class="sub-line">ไปยังหน้ารายละเอียดนโยบายความเป็นส่วนตัวของ Hero Hunmin</div>
+            <a
+                class="link-btn"
+                href="../privacy.html"
+            >
+                <div class="main-line">
+                    นโยบายความเป็นส่วนตัว
+                </div>
+
+                <div class="sub-line">
+                    ไปยังหน้านโยบายความเป็นส่วนตัวของ RougeMin
+                </div>
             </a>
 
-            <a class="link-btn" href="../account-deletion.html">
-                <div class="main-line">คำแนะนำการลบบัญชี</div>
-                <div class="sub-line">อธิบายวิธีลบบัญชีและข้อมูลของคุณใน Hero Hunmin</div>
+            <a
+                class="link-btn"
+                href="../account-deletion.html"
+            >
+                <div class="main-line">
+                    คำแนะนำการลบบัญชี
+                </div>
+
+                <div class="sub-line">
+                    ดูวิธีลบบัญชีและข้อมูลของ RougeMin
+                </div>
             </a>
         </div>
     </section>
 
-    <!-- 스토어 링크 (Play Store / App Store) -->
+    <!-- ลิงก์ร้านค้า -->
     <section class="store-panel">
-        <div class="section-heading">ลิงก์ไปยังสโตร์</div>
+        <div class="section-heading">
+            ลิงก์ร้านค้า
+        </div>
+
         <div class="store-links">
             <a
                 class="link-btn"
@@ -447,180 +507,282 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <div class="main-line">Google Play Store</div>
-                <div class="sub-line">ดาวน์โหลดเวอร์ชัน Android</div>
+                <div class="main-line">
+                    Google Play Store
+                </div>
+
+                <div class="sub-line">
+                    ดาวน์โหลดเวอร์ชัน Android
+                </div>
             </a>
 
             <a
                 class="link-btn"
-                href="https://apps.apple.com/kr/app/hero-hunmin-%EB%A1%9C%EA%B7%B8%EB%9D%BC%EC%9D%B4%ED%81%AC-%EC%98%81%EC%96%B4-%ED%95%99%EC%8A%B5-%EA%B2%8C%EC%9E%84/id6754667621"
+                href="https://apps.apple.com/kr/app/id6754667621"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <div class="main-line">Apple App Store</div>
-                <div class="sub-line">ดาวน์โหลดเวอร์ชัน iOS</div>
+                <div class="main-line">
+                    Apple App Store
+                </div>
+
+                <div class="sub-line">
+                    ดาวน์โหลดเวอร์ชัน iOS
+                </div>
             </a>
         </div>
     </section>
 
-    <!-- 게임 영상 (세로) -->
+    <!-- วิดีโอการเล่นเกม -->
     <section class="video-panel">
-        <div class="section-heading">วิดีโอการเล่นเกม</div>
+        <div class="section-heading">
+            วิดีโอการเล่นเกม
+        </div>
 
         <div class="video-wrapper">
+            <!-- รับรหัสวิดีโอจาก youtube-config.js -->
             <iframe
-                src="https://www.youtube.com/embed/SgGiZ_Mvy44"
-                title="Hero Hunmin Gameplay"
+                id="gameVideo"
+                title="วิดีโอการเล่น RougeMin"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
+                allowfullscreen
+            >
             </iframe>
         </div>
 
         <div class="footer-note">
-            นี่คือวิดีโอการเล่นจริงในรูปแบบหน้าจอแนวตั้ง<br/>
-            เนื้อหาในเกมจริงอาจมีการเปลี่ยนแปลงได้ตามการอัปเดต
+            นี่คือวิดีโอการเล่นเกมจริงในรูปแบบแนวตั้ง<br />
+            เนื้อหาของเกมอาจเปลี่ยนแปลงตามการอัปเดต
         </div>
     </section>
 
-    <!-- 스크린샷 갤러리 -->
+    <!-- รูปภาพประชาสัมพันธ์เกม -->
     <section class="screens-panel">
-        <div class="section-heading">ภาพหน้าจอของเกม</div>
+        <div class="section-heading">
+            รูปภาพประชาสัมพันธ์เกม
+        </div>
 
         <div class="screens-grid">
-            <div class="thumb" data-img="../images/iPhone_Berserk_GamePlay_02.jpg">
-                <img src="../images/iPhone_Berserk_GamePlay_02.jpg" alt="ภาพหน้าจอ 1"/>
+
+            <!-- รูปที่ 1: รูปภาพประชาสัมพันธ์เกม -->
+            <div
+                class="thumb"
+                data-img="../images/promo-thai-01-game.png"
+            >
+                <img
+                    src="../images/promo-thai-01-game.png"
+                    alt="รูปภาพประชาสัมพันธ์เกม"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_GameQuiz_01.jpg" alt="ภาพหน้าจอ 2"/>
+            <!-- รูปที่ 2: รูปภาพประชาสัมพันธ์แบบทดสอบเกม -->
+            <div
+                class="thumb"
+                data-img="../images/promo-thai-02-game-quiz.png"
+            >
+                <img
+                    src="../images/promo-thai-02-game-quiz.png"
+                    alt="รูปภาพประชาสัมพันธ์แบบทดสอบเกม"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_02.jpg">
-                <img src="../images/iPhone_Berserk_GameQuiz_02.jpg" alt="ภาพหน้าจอ 3"/>
+            <!-- รูปที่ 3: รูปภาพประชาสัมพันธ์แบบทดสอบประโยค -->
+            <div
+                class="thumb"
+                data-img="../images/promo-thai-03-sentence-quiz.png"
+            >
+                <img
+                    src="../images/promo-thai-03-sentence-quiz.png"
+                    alt="รูปภาพประชาสัมพันธ์แบบทดสอบประโยค"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg" alt="ภาพหน้าจอ 4"/>
-            </div>
-
-            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg">
-                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg" alt="ภาพหน้าจอ 5"/>
-            </div>
-
-            <div class="thumb" data-img="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg" alt="ภาพหน้าจอ 6"/>
-            </div>
         </div>
 
         <div class="footer-note">
-            แตะที่รูปภาพเพื่อดูแบบขนาดใหญ่
+            คลิกที่รูปภาพเพื่อดูภาพขนาดใหญ่
         </div>
     </section>
 
-    <!-- Customer Support -->
+    <!-- ฝ่ายสนับสนุนลูกค้า -->
     <section class="actions-panel">
-        <div class="actions-title">ฝ่ายสนับสนุนลูกค้า</div>
+        <div class="actions-title">
+            ฝ่ายสนับสนุนลูกค้า
+        </div>
+
         <div class="btn-list">
-            <a class="link-btn" href="mailto:meteor666a@gmail.com?subject=Hero%20Hunmin%20คำถามฝ่ายสนับสนุนลูกค้า&body=สวัสดีครับ/ค่ะ.%0D%0A%0D%0Aโปรดกรอกรายละเอียดคำถามของคุณตามหัวข้อต่อไปนี้.%0D%0A-%20ประเภทคำถาม%20(ข้อผิดพลาด,%20ความไม่สะดวก,%20ข้อเสนอฟีเจอร์%20ฯลฯ):%0D%0A-%20อุปกรณ์ที่ใช้%20(OS,%20รุ่นอุปกรณ์):%0D%0A-%20คำอธิบายสถานการณ์ที่เกิดขึ้น:%0D%0A%0D%0Aขอบคุณครับ/ค่ะ.">
-                <div class="main-line">อีเมลติดต่อ: meteor666a@gmail.com</div>
-                <div class="sub-line">โปรดส่งรายงานข้อผิดพลาด ข้อเสนอแนะการปรับปรุง และคำถามอื่น ๆ มาทางอีเมล</div>
+            <a
+                class="link-btn"
+                href="mailto:meteor666a@gmail.com?subject=สอบถามฝ่ายสนับสนุน%20RougeMin&body=สวัสดี%0D%0A%0D%0Aโปรดระบุรายละเอียดคำถามตามหัวข้อต่อไปนี้%0D%0A-%20ประเภทคำถาม%20(ข้อผิดพลาด%20ปัญหาการใช้งาน%20ข้อเสนอแนะเกี่ยวกับฟังก์ชัน%20ฯลฯ):%0D%0A-%20อุปกรณ์ที่ใช้%20(ระบบปฏิบัติการและชื่ออุปกรณ์):%0D%0A-%20รายละเอียดสถานการณ์ที่เกิดขึ้น:%0D%0A%0D%0Aขอบคุณ"
+            >
+                <div class="main-line">
+                    อีเมลติดต่อ: meteor666a@gmail.com
+                </div>
+
+                <div class="sub-line">
+                    โปรดส่งรายงานข้อผิดพลาด คำขอปรับปรุง หรือคำถามอื่น ๆ ทางอีเมล
+                </div>
             </a>
         </div>
+
         <div class="footer-note">
-            เราจะตอบกลับให้เร็วที่สุดเท่าที่จะทำได้<br/>
-            © 2025 Fun And Study. สงวนลิขสิทธิ์ทั้งหมด
+            เราจะตอบกลับโดยเร็วที่สุด<br />
+            © 2025 Fun And Study. All rights reserved.
         </div>
     </section>
 
 </div>
 
-<!-- 전체 화면 이미지 뷰어 -->
-<div class="modal-backdrop" id="imgModal">
+<!-- ตัวดูรูปภาพแบบเต็มหน้าจอ -->
+<div
+    class="modal-backdrop"
+    id="imgModal"
+>
     <div class="modal-inner">
-        <img id="modalImage" src="" alt="ตัวอย่างภาพหน้าจอ"/>
-        <button class="modal-close" id="modalCloseImg">✕ ปิด</button>
+        <img
+            id="modalImage"
+            src=""
+            alt="ตัวอย่างรูปภาพประชาสัมพันธ์"
+        />
+
+        <button
+            type="button"
+            class="modal-close"
+            id="modalCloseImg"
+        >
+            ✕ ปิด
+        </button>
     </div>
 </div>
 
-<!-- 게임 설명 모달 -->
-<div class="modal-backdrop" id="descModal">
+<!-- หน้าต่างรายละเอียดเกม -->
+<div
+    class="modal-backdrop"
+    id="descModal"
+>
     <div class="modal-inner desc-inner">
-        <button class="modal-close" id="modalCloseDesc">✕ ปิด</button>
-        <h2>แนะนำเกม</h2>
+
+        <button
+            type="button"
+            class="modal-close"
+            id="modalCloseDesc"
+        >
+            ✕ ปิด
+        </button>
+
+        <h2>
+            แนะนำเกม
+        </h2>
+
         <p>
-เราได้นำการเรียนภาษาอังกฤษมาผสมผสานเข้ากับการต่อสู้และการเติบโตสุดเร้าใจแบบ roguelike อย่างลงตัว!
-พัฒนาฮีโร่ของคุณผ่านการท้าทายที่ไม่รู้จบ,
-เปิดหีบสมบัติแล้วสร้างบิลด์ในแบบของคุณเองให้สมบูรณ์
-เมื่อตอบคำถามควิซภาษาอังกฤษถูก เวลาคูลดาวน์จะสั้นลงและบัฟจากควิซจะถูกเปิดใช้งาน!
+นี่คือเกมโร้กไลก์เพื่อเรียนภาษาอังกฤษที่ทำให้คุณได้เห็น ฟัง และพูดตามคำศัพท์กับประโยคซ้ำ ๆ เพียงแค่เล่นเกม
 
-ระบบการเรียนรู้ที่ฝังลึกในความทรงจำ
- • เรียนภาษาอังกฤษแบบเน้น “การแสดงออก” ผ่านการฟัง พูด และทำควิซ โดยไม่ต้องท่องจำแบบยัดเยียด!
- • ฐานข้อมูลขนาดใหญ่กว่า 20,000 ประโยค และ 30,000 คำศัพท์!
- • การเรียนผ่านประโยคช่วยให้จำได้นานกว่า และนำไปใช้ได้จริงมากกว่า!
- • ค้นหาคำศัพท์ที่สงสัย แล้วเรียนรู้ผ่านประโยคตัวอย่างได้ทันที!
+เช่นเดียวกับการเรียนสำเนียงที่ฟังดูเป็นธรรมชาติมากขึ้นเมื่อได้ฟังและพูดตามเจ้าของภาษาอย่างต่อเนื่อง แทนที่จะเรียนจากหนังสือเพียงอย่างเดียว ภาษาอังกฤษก็จะมีความแม่นยำและเป็นธรรมชาติมากขึ้นเมื่อคุณฟังและพูดซ้ำบ่อย ๆ
 
-รวมทุกแง่มุมของภาษาอังกฤษไว้ในเกมเดียว! เนื้อหาอัปเดตเพิ่มไม่รู้จบ
- • พื้นฐานต้องแน่น! [บทสนทนาประจำวัน]
- • เล่าถึงงานอดิเรกเป็นภาษาอังกฤษ? [ท่องเที่ยว ฟุตบอล แฟชั่น รถยนต์ ฟิตเนส เพลงป็อป]
- • เพื่อการสนทนาเชิงความรู้! [ตำนานกรีก–โรมัน วัฒนธรรมโลก ศัพท์เศรษฐกิจ]
- • เรียนรู้จากบุคคลสำคัญ! [ลินคอล์น]
- • เรียนรู้เรื่องเกมผ่านเกม! [DAVE THE DIVER (รวมเนื้อหาช่วงต้นของเกม)]
- • ภาษาอังกฤษสาย IT เพื่ออนาคตของคุณ!
-    - [Excel] เชี่ยวชาญฟังก์ชันหลักและฟังก์ชันสถิติ กลายเป็นเทพงานเอกสาร!
-    - [Unity] พื้นฐานการพัฒนาเกม พิชิต Editor และฟังก์ชัน C#!
-    - [โค้ดดิ้ง] เรียนรู้แนวคิดสำคัญของ C#, Python และ JAVA!
+เกมนี้มีคำศัพท์ 20,000 คำและประโยค 30,000 ประโยค คุณสามารถค้นหาคำศัพท์ที่ต้องการและเรียนรู้ผ่านประโยคได้ รวมถึงมีเนื้อหาหลากหลาย เช่น บทสนทนาในชีวิตประจำวันและภาษาอังกฤษสำหรับการเดินทาง
 
-เริ่มต้นวิธีเรียนภาษาอังกฤษที่สนุกที่สุดได้เลยตอนนี้!
-ยิ่งเล่นเกมไปเรื่อย ๆ ทักษะภาษาอังกฤษของคุณก็จะพัฒนาขึ้นอย่างรวดเร็ว!
-เข้ามาสู่โลกของ Hero Hunmin ได้เลยตอนนี้!
+เมื่อวางข้อความจากข่าว หนังสือ สื่อ หรือเนื้อเพลง ระบบจะสร้างประโยคที่เหมาะสมสำหรับการเรียนรู้โดยอัตโนมัติ
+
+สนุกกับเกม เรียนภาษาอังกฤษอย่างเป็นธรรมชาติ
         </p>
     </div>
 </div>
 
-<script>
-    // 이미지 확대 모달 로직
-    const imgModal = document.getElementById('imgModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalCloseImg = document.getElementById('modalCloseImg');
+<!-- ไฟล์ตั้งค่า YouTube ส่วนกลางในโฟลเดอร์หลัก -->
+<script src="../youtube-config.js"></script>
 
-    document.querySelectorAll('.thumb').forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            const imgPath = thumb.getAttribute('data-img');
+<script>
+    /*
+        ตัวอย่าง youtube-config.js:
+
+        window.ROUGEMIN_YOUTUBE_VIDEO_ID = "cHKZaiQ3miA";
+    */
+
+    // ใช้รหัสวิดีโอ YouTube ส่วนกลาง
+    const gameVideo = document.getElementById("gameVideo");
+
+    if (
+        gameVideo &&
+        window.ROUGEMIN_YOUTUBE_VIDEO_ID
+    ) {
+        gameVideo.src =
+            "https://www.youtube.com/embed/" +
+            window.ROUGEMIN_YOUTUBE_VIDEO_ID;
+    }
+
+    // องค์ประกอบหน้าต่างขยายรูปภาพ
+    const imgModal = document.getElementById("imgModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalCloseImg = document.getElementById("modalCloseImg");
+
+    // เหตุการณ์คลิกสำหรับรูปภาพประชาสัมพันธ์ทั้งหมด
+    document.querySelectorAll(".thumb").forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+            const imgPath = thumb.getAttribute("data-img");
+
             modalImage.src = imgPath;
-            imgModal.style.display = 'flex';
+            imgModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
         });
     });
 
-    modalCloseImg.addEventListener('click', () => {
-        imgModal.style.display = 'none';
-        modalImage.src = '';
-    });
+    // ปิดหน้าต่างรูปภาพ
+    function closeImageModal() {
+        imgModal.style.display = "none";
+        modalImage.src = "";
+        document.body.style.overflow = "";
+    }
 
-    imgModal.addEventListener('click', (e) => {
-        if (e.target === imgModal) {
-            imgModal.style.display = 'none';
-            modalImage.src = '';
+    modalCloseImg.addEventListener(
+        "click",
+        closeImageModal
+    );
+
+    // คลิกพื้นหลังสีดำเพื่อปิด
+    imgModal.addEventListener("click", (event) => {
+        if (event.target === imgModal) {
+            closeImageModal();
         }
     });
 
-    // 게임 설명 모달 로직
-    const descModal = document.getElementById('descModal');
-    const openDescBtn = document.getElementById('openDesc');
-    const modalCloseDesc = document.getElementById('modalCloseDesc');
+    // องค์ประกอบหน้าต่างรายละเอียดเกม
+    const descModal = document.getElementById("descModal");
+    const openDescBtn = document.getElementById("openDesc");
+    const modalCloseDesc = document.getElementById("modalCloseDesc");
 
-    openDescBtn.addEventListener('click', () => {
-        descModal.style.display = 'flex';
+    // เปิดรายละเอียดเกม
+    openDescBtn.addEventListener("click", () => {
+        descModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
     });
 
-    modalCloseDesc.addEventListener('click', () => {
-        descModal.style.display = 'none';
-    });
+    // ปิดรายละเอียดเกม
+    function closeDescriptionModal() {
+        descModal.style.display = "none";
+        document.body.style.overflow = "";
+    }
 
-    descModal.addEventListener('click', (e) => {
-        if (e.target === descModal) {
-            descModal.style.display = 'none';
+    modalCloseDesc.addEventListener(
+        "click",
+        closeDescriptionModal
+    );
+
+    // คลิกพื้นหลังสีดำเพื่อปิด
+    descModal.addEventListener("click", (event) => {
+        if (event.target === descModal) {
+            closeDescriptionModal();
         }
+    });
+
+    // ปิดหน้าต่างที่เปิดอยู่ด้วยปุ่ม ESC
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") {
+            return;
+        }
+
+        closeImageModal();
+        closeDescriptionModal();
     });
 </script>
 
