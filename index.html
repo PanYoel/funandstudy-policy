@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fun And Study - Hero Hunmin</title>
+
+<title>Fun And Study - RougeMin</title>
+
 <style>
     :root {
         --bg-color: #0f172a;
@@ -25,10 +27,23 @@
 
     body {
         margin: 0;
-        background: radial-gradient(circle at 20% 20%, #1e2538 0%, #0f172a 60%);
+        background:
+            radial-gradient(
+                circle at 20% 20%,
+                #1e2538 0%,
+                #0f172a 60%
+            );
         background-color: var(--bg-color);
         color: var(--text-main);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", Roboto, "Noto Sans", "Segoe UI", sans-serif;
+        font-family:
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Inter",
+            Roboto,
+            "Noto Sans",
+            "Segoe UI",
+            sans-serif;
         line-height: 1.5;
         display: flex;
         justify-content: center;
@@ -44,7 +59,7 @@
         position: relative;
     }
 
-    /* 헤더(브랜드+제목+아이콘) */
+    /* 브랜드, 제목, 아이콘 영역 */
     .brand-block {
         display: flex;
         flex-direction: column;
@@ -127,7 +142,12 @@
     .lang-btn {
         appearance: none;
         border-radius: var(--radius);
-        background: linear-gradient(145deg, rgba(79,70,229,0.18) 0%, rgba(79,70,229,0) 60%);
+        background:
+            linear-gradient(
+                145deg,
+                rgba(79,70,229,0.18) 0%,
+                rgba(79,70,229,0) 60%
+            );
         border: 1px solid rgba(255,255,255,0.1);
         box-shadow: var(--shadow-button);
         color: var(--text-main);
@@ -160,78 +180,178 @@
     }
 </style>
 </head>
+
 <body>
 
 <div class="page-wrap">
 
-    <!-- 브랜드 / 타이틀 / 아이콘 -->
+    <!-- 브랜드 / 게임 제목 / 아이콘 -->
     <header class="brand-block">
-        <div class="brand-name">Fun And Study</div>
+
+        <div class="brand-name">
+            Fun And Study
+        </div>
 
         <div class="game-identity">
-            <img class="game-icon" src="images/Hero Hunmin - English Icon.png" alt="Hero Hunmin Icon" />
 
-            <div class="game-title">Hero Hunmin: Roguelike Learning English Game</div>
+            <!--
+                기존 이미지 파일 이름은 그대로 유지했습니다.
+
+                실제 이미지 파일 이름도 변경했다면 아래 경로를
+                images/RougeMin - English Icon.png
+                형식으로 변경하면 됩니다.
+            -->
+            <img
+                class="game-icon"
+                src="images/Hero Hunmin - English Icon.png"
+                alt="RougeMin Icon"
+            />
+
+            <div class="game-title">
+                RougeMin: Roguelike Learning English Game
+            </div>
+
         </div>
+
     </header>
 
     <!-- 언어 선택 -->
     <section class="lang-panel">
+
         <div class="lang-title">
             Choose your language / 사용 언어를 선택하세요
         </div>
 
         <div class="lang-grid">
+
             <!-- 한국어 -->
-            <a class="lang-btn" href="home/home-korean.html">
+            <a
+                class="lang-btn"
+                href="home/home-korean.html"
+                lang="ko"
+            >
                 한국어
             </a>
 
             <!-- 일본어 -->
-            <a class="lang-btn" href="home/home-japanese.html">
+            <a
+                class="lang-btn"
+                href="home/home-japanese.html"
+                lang="ja"
+            >
                 日本語
             </a>
 
             <!-- 중국어 간체 -->
-            <a class="lang-btn" href="home/home-chinese-simplified.html">
+            <a
+                class="lang-btn"
+                href="home/home-chinese-simplified.html"
+                lang="zh-CN"
+            >
                 简体中文
             </a>
 
             <!-- 중국어 번체 -->
-            <a class="lang-btn" href="home/home-chinese-traditional.html">
+            <a
+                class="lang-btn"
+                href="home/home-chinese-traditional.html"
+                lang="zh-TW"
+            >
                 繁體中文
             </a>
 
             <!-- 스페인어 -->
-            <a class="lang-btn" href="home/home-spanish.html">
+            <a
+                class="lang-btn"
+                href="home/home-spanish.html"
+                lang="es"
+            >
                 Español
             </a>
 
             <!-- 포르투갈어 -->
-            <a class="lang-btn" href="home/home-portuguese.html">
+            <a
+                class="lang-btn"
+                href="home/home-portuguese.html"
+                lang="pt"
+            >
                 Português
             </a>
 
             <!-- 베트남어 -->
-            <a class="lang-btn" href="home/home-vietnamese.html">
+            <a
+                class="lang-btn"
+                href="home/home-vietnamese.html"
+                lang="vi"
+            >
                 Tiếng Việt
             </a>
 
             <!-- 태국어 -->
-            <a class="lang-btn" href="home/home-thai.html">
+            <a
+                class="lang-btn"
+                href="home/home-thai.html"
+                lang="th"
+            >
                 ไทย
             </a>
 
             <!-- 러시아어 -->
-            <a class="lang-btn" href="home/home-russian.html">
+            <a
+                class="lang-btn"
+                href="home/home-russian.html"
+                lang="ru"
+            >
                 Русский
             </a>
+
+            <!-- 프랑스어 -->
+            <a
+                class="lang-btn"
+                href="home/home-french.html"
+                lang="fr"
+            >
+                Français
+            </a>
+
+            <!-- 독일어 -->
+            <a
+                class="lang-btn"
+                href="home/home-german.html"
+                lang="de"
+            >
+                Deutsch
+            </a>
+
+            <!-- 인도네시아어 -->
+            <a
+                class="lang-btn"
+                href="home/home-indonesian.html"
+                lang="id"
+            >
+                Bahasa Indonesia
+            </a>
+
+            <!-- 이탈리아어 -->
+            <a
+                class="lang-btn"
+                href="home/home-italian.html"
+                lang="it"
+            >
+                Italiano
+            </a>
+
         </div>
 
         <div class="footer-note">
-            Developer: <a href="mailto:meteor666a@gmail.com">meteor666a@gmail.com</a><br/>
+            Developer:
+            <a href="mailto:meteor666a@gmail.com">
+                meteor666a@gmail.com
+            </a>
+            <br />
             © 2025 Fun And Study. All rights reserved.
         </div>
+
     </section>
 
 </div>
