@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fun And Study - Hero Hunmin</title>
+
+<title>Fun And Study - RougeMin</title>
+
 <style>
     :root {
         --bg-color: #0f172a;
@@ -26,10 +28,24 @@
 
     body {
         margin: 0;
-        background: radial-gradient(circle at 20% 20%, #1e2538 0%, #0f172a 60%);
+        background:
+            radial-gradient(
+                circle at 20% 20%,
+                #1e2538 0%,
+                #0f172a 60%
+            );
         background-color: var(--bg-color);
         color: var(--text-main);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", Roboto, "Noto Sans", "Segoe UI", sans-serif;
+        font-family:
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Inter",
+            Roboto,
+            "Noto Sans TC",
+            "Noto Sans",
+            "Segoe UI",
+            sans-serif;
         line-height: 1.5;
         display: flex;
         justify-content: center;
@@ -45,6 +61,7 @@
         position: relative;
     }
 
+    /* 品牌、遊戲標題、圖示 */
     .brand-block {
         display: flex;
         flex-direction: column;
@@ -99,6 +116,7 @@
         text-align: center;
     }
 
+    /* 共用按鈕面板 */
     .actions-panel {
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--border-color);
@@ -130,7 +148,12 @@
         appearance: none;
         border: 0;
         border-radius: var(--radius);
-        background: linear-gradient(145deg, rgba(79,70,229,0.18) 0%, rgba(79,70,229,0) 60%);
+        background:
+            linear-gradient(
+                145deg,
+                rgba(79,70,229,0.18) 0%,
+                rgba(79,70,229,0) 60%
+            );
         border: 1px solid rgba(255,255,255,0.1);
         box-shadow: var(--shadow-button);
         color: var(--text-main);
@@ -144,6 +167,7 @@
         flex-direction: column;
         gap: 4px;
         position: relative;
+        cursor: pointer;
     }
 
     .link-btn .main-line {
@@ -165,6 +189,7 @@
         transform: scale(0.98);
     }
 
+    /* 遊戲介紹按鈕 */
     .desc-btn {
         margin-top: 4px;
         padding: 10px 14px;
@@ -172,6 +197,7 @@
         align-self: stretch;
     }
 
+    /* 商店連結 */
     .store-panel {
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--border-color);
@@ -200,6 +226,16 @@
         }
     }
 
+    /* 共用區段標題 */
+    .section-heading {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-dim);
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+
+    /* YouTube 影片 */
     .video-panel {
         background: rgba(255,255,255,0.02);
         border: 1px solid var(--border-color);
@@ -209,14 +245,6 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
-    }
-
-    .section-heading {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--text-dim);
-        text-align: center;
-        letter-spacing: -0.02em;
     }
 
     .video-wrapper {
@@ -241,6 +269,7 @@
         height: 100%;
     }
 
+    /* 宣傳圖片 */
     .screens-panel {
         background: rgba(255,255,255,0.02);
         border: 1px solid var(--border-color);
@@ -252,22 +281,17 @@
         gap: 16px;
     }
 
+    /* 將3張宣傳圖片橫向排列 */
     .screens-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    @media (min-width: 480px) {
-        .screens-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
     }
 
     .thumb {
         position: relative;
         background: var(--thumb-bg);
-        border-radius: var(--radius);
+        border-radius: 12px;
         border: 1px solid var(--border-color);
         box-shadow: 0 16px 32px rgba(0,0,0,0.7);
         overflow: hidden;
@@ -287,22 +311,28 @@
     }
 
     .thumb::after {
-        content: "點擊放大檢視";
+        content: "點擊放大";
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+        background:
+            linear-gradient(
+                to top,
+                rgba(0,0,0,0.75),
+                transparent 70%
+            );
         color: #fff;
-        font-size: 0.7rem;
+        font-size: 0.62rem;
         line-height: 1.2;
         text-align: center;
-        padding: 8px 4px;
+        padding: 8px 2px 6px;
         letter-spacing: -0.02em;
         font-weight: 500;
         pointer-events: none;
     }
 
+    /* 共用彈出視窗 */
     .modal-backdrop {
         position: fixed;
         inset: 0;
@@ -355,6 +385,7 @@
         transform: scale(0.96);
     }
 
+    /* 遊戲介紹彈出視窗 */
     .desc-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -375,7 +406,7 @@
     .desc-inner p {
         font-size: 0.85rem;
         color: var(--text-dim);
-        line-height: 1.6;
+        line-height: 1.7;
         white-space: pre-line;
     }
 
@@ -388,46 +419,84 @@
     }
 </style>
 </head>
+
 <body>
 
 <div class="page-wrap">
 
+    <!-- 品牌 / 遊戲標題 / 圖示 -->
     <header class="brand-block">
-        <div class="brand-name">Fun And Study</div>
+        <div class="brand-name">
+            Fun And Study
+        </div>
 
         <div class="game-identity">
-            <img class="game-icon" src="../images/Hero Hunmin - English Icon.png" alt="Hero Hunmin 圖示" />
 
-            <div class="game-title">Hero Hunmin：Roguelike 英語學習遊戲</div>
-            <div class="game-sub">
-                一邊玩遊戲一邊讓英語實力突飛猛進！<br/>
-                全新概念的 Roguelike 英語學習。
+            <img
+                class="game-icon"
+                src="../images/RougeMin - English Icon.png"
+                alt="RougeMin 圖示"
+            />
+
+            <div class="game-title">
+                RougeMin：Roguelike 英語學習遊戲
             </div>
 
-            <button type="button" class="link-btn desc-btn" id="openDesc">
+            <div class="game-sub">
+                遊戲更有趣，英語更自然
+            </div>
+
+            <button
+                type="button"
+                class="link-btn desc-btn"
+                id="openDesc"
+            >
                 查看詳細遊戲介紹
             </button>
         </div>
     </header>
 
+    <!-- 遊戲資訊與政策 -->
     <section class="actions-panel">
-        <div class="actions-title">遊戲資訊與政策</div>
+        <div class="actions-title">
+            遊戲資訊與政策
+        </div>
 
         <div class="btn-list">
-            <a class="link-btn" href="../privacy.html">
-                <div class="main-line">隱私權政策</div>
-                <div class="sub-line">前往 Hero Hunmin 的隱私權政策頁面。</div>
+            <a
+                class="link-btn"
+                href="../privacy.html"
+            >
+                <div class="main-line">
+                    隱私權政策
+                </div>
+
+                <div class="sub-line">
+                    前往 RougeMin 隱私權政策頁面。
+                </div>
             </a>
 
-            <a class="link-btn" href="../account-deletion.html">
-                <div class="main-line">帳號刪除指南</div>
-                <div class="sub-line">說明如何刪除 Hero Hunmin 帳號與資料。</div>
+            <a
+                class="link-btn"
+                href="../account-deletion.html"
+            >
+                <div class="main-line">
+                    帳號刪除說明
+                </div>
+
+                <div class="sub-line">
+                    查看 RougeMin 帳號與資料的刪除方式。
+                </div>
             </a>
         </div>
     </section>
 
+    <!-- 商店連結 -->
     <section class="store-panel">
-        <div class="section-heading">商店連結</div>
+        <div class="section-heading">
+            商店連結
+        </div>
+
         <div class="store-links">
             <a
                 class="link-btn"
@@ -435,173 +504,261 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <div class="main-line">Google Play Store</div>
-                <div class="sub-line">下載 Android 版本</div>
+                <div class="main-line">
+                    Google Play Store
+                </div>
+
+                <div class="sub-line">
+                    下載 Android 版本
+                </div>
             </a>
 
             <a
                 class="link-btn"
-                href="https://apps.apple.com/kr/app/hero-hunmin-%EB%A1%9C%EA%B7%B8%EB%9D%BC%EC%9D%B4%ED%81%AC-%EC%98%81%EC%96%B4-%ED%95%99%EC%8A%B5-%EA%B2%8C%EC%9E%84/id6754667621"
+                href="https://apps.apple.com/kr/app/id6754667621"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <div class="main-line">Apple App Store</div>
-                <div class="sub-line">下載 iOS 版本</div>
+                <div class="main-line">
+                    Apple App Store
+                </div>
+
+                <div class="sub-line">
+                    下載 iOS 版本
+                </div>
             </a>
         </div>
     </section>
 
+    <!-- 遊戲影片 -->
     <section class="video-panel">
-        <div class="section-heading">遊戲實機影片</div>
+        <div class="section-heading">
+            遊戲影片
+        </div>
 
         <div class="video-wrapper">
             <iframe
-                src="https://www.youtube.com/embed/SgGiZ_Mvy44"
-                title="Hero Hunmin Gameplay"
+                id="gameVideo"
+                title="RougeMin 遊戲影片"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
+                allowfullscreen
+            >
             </iframe>
         </div>
 
         <div class="footer-note">
-            這是直式畫面的實際遊戲實機影片。<br/>
-            實際遊戲內容可能會依更新而有所變更。
+            這是直向格式的實際遊戲影片。<br />
+            遊戲內容可能會隨更新而有所變更。
         </div>
     </section>
 
+    <!-- 遊戲宣傳圖片 -->
     <section class="screens-panel">
-        <div class="section-heading">遊戲截圖</div>
+        <div class="section-heading">
+            遊戲宣傳圖片
+        </div>
 
         <div class="screens-grid">
-            <div class="thumb" data-img="../images/iPhone_Berserk_GamePlay_02.jpg">
-                <img src="../images/iPhone_Berserk_GamePlay_02.jpg" alt="截圖 1"/>
+
+            <div
+                class="thumb"
+                data-img="../images/promo-chinese-traditional-01-game.png"
+            >
+                <img
+                    src="../images/promo-chinese-traditional-01-game.png"
+                    alt="遊戲宣傳圖片"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_GameQuiz_01.jpg" alt="截圖 2"/>
+            <div
+                class="thumb"
+                data-img="../images/promo-chinese-traditional-02-game-quiz.png"
+            >
+                <img
+                    src="../images/promo-chinese-traditional-02-game-quiz.png"
+                    alt="遊戲問答宣傳圖片"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_02.jpg">
-                <img src="../images/iPhone_Berserk_GameQuiz_02.jpg" alt="截圖 3"/>
+            <div
+                class="thumb"
+                data-img="../images/promo-chinese-traditional-03-sentence-quiz.png"
+            >
+                <img
+                    src="../images/promo-chinese-traditional-03-sentence-quiz.png"
+                    alt="句子問答宣傳圖片"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg" alt="截圖 4"/>
-            </div>
-
-            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg">
-                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg" alt="截圖 5"/>
-            </div>
-
-            <div class="thumb" data-img="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg" alt="截圖 6"/>
-            </div>
         </div>
 
         <div class="footer-note">
-            點擊圖片即可放大檢視。
+            點擊圖片即可放大查看。
         </div>
     </section>
 
+    <!-- 客戶支援 -->
     <section class="actions-panel">
-        <div class="actions-title">客戶支援</div>
+        <div class="actions-title">
+            客戶支援
+        </div>
+
         <div class="btn-list">
-            <a class="link-btn" href="mailto:meteor666a@gmail.com?subject=Hero%20Hunmin%20客戶支援詢問&body=您好。%0D%0A%0D%0A請參考下列項目，詳細填寫您的問題。%0D%0A- 諮詢類型（錯誤、使用不便、功能建議等）：%0D%0A- 使用裝置（作業系統、裝置名稱）：%0D%0A- 發生狀況說明：%0D%0A%0D%0A謝謝。">
-                <div class="main-line">客服信箱：meteor666a@gmail.com</div>
-                <div class="sub-line">請透過電子郵件傳送錯誤回報、改進建議及其他問題。</div>
+            <a
+                class="link-btn"
+                href="mailto:meteor666a@gmail.com?subject=RougeMin%20客戶支援詢問&body=您好。%0D%0A%0D%0A請參考以下項目，詳細填寫您的詢問內容。%0D%0A-%20詢問類型（錯誤、不便之處、功能建議等）：%0D%0A-%20使用裝置（作業系統、裝置型號）：%0D%0A-%20問題發生時的詳細情況：%0D%0A%0D%0A謝謝。"
+            >
+                <div class="main-line">
+                    聯絡信箱：meteor666a@gmail.com
+                </div>
+
+                <div class="sub-line">
+                    請透過電子郵件傳送錯誤回報、改善建議或其他詢問。
+                </div>
             </a>
         </div>
+
         <div class="footer-note">
-            我們會盡快回覆您。<br/>
+            我們會盡快回覆。<br />
             © 2025 Fun And Study. All rights reserved.
         </div>
     </section>
 
 </div>
 
-<div class="modal-backdrop" id="imgModal">
+<!-- 全螢幕圖片檢視器 -->
+<div
+    class="modal-backdrop"
+    id="imgModal"
+>
     <div class="modal-inner">
-        <img id="modalImage" src="" alt="截圖預覽"/>
-        <button class="modal-close" id="modalCloseImg">✕ 關閉</button>
+        <img
+            id="modalImage"
+            src=""
+            alt="宣傳圖片預覽"
+        />
+
+        <button
+            type="button"
+            class="modal-close"
+            id="modalCloseImg"
+        >
+            ✕ 關閉
+        </button>
     </div>
 </div>
 
-<div class="modal-backdrop" id="descModal">
+<!-- 遊戲介紹彈出視窗 -->
+<div
+    class="modal-backdrop"
+    id="descModal"
+>
     <div class="modal-inner desc-inner">
-        <button class="modal-close" id="modalCloseDesc">✕ 關閉</button>
-        <h2>遊戲介紹</h2>
+
+        <button
+            type="button"
+            class="modal-close"
+            id="modalCloseDesc"
+        >
+            ✕ 關閉
+        </button>
+
+        <h2>
+            遊戲介紹
+        </h2>
+
         <p>
-將 Roguelike 帶來的刺激戰鬥與成長，與英語學習完美融合！
-透過不斷挑戰讓勇者成長，
-打開寶箱，完成只屬於你的 Build。
-答對英語測驗就能縮短冷卻時間，並觸發強力測驗 Buff！
+這是一款 Roguelike 英語學習遊戲。只要遊玩，就能反覆看到、聽到並跟讀英語單字與句子。
 
-牢牢刻進腦中的學習系統
- • 不再填鴨式，只靠聽、說與測驗來熟悉的輸出型英語學習！
- • 超過 2 萬句、3 萬個單字的龐大資料庫！
- • 以句子為單位學習，對記憶持久與實際運用更加有效！
- • 查詢好奇的單字，立刻透過例句來學習！
+學習方言時，與其只透過書本學習，不如在當地反覆聆聽並模仿，這樣會更加自然。英語也是如此，聽得越多、說得越多，就越容易熟悉正確而自然的發音與表達方式。
 
-把世界上的英語都裝進來！不斷追加的內容
- • 從基礎扎實開始！［日常會話］
- • 我的興趣用英語怎麼說？［旅行、足球、時尚、汽車、健身、流行歌曲］
- • 為了更有深度的對話！［希臘・羅馬神話、世界文化、經濟術語］
- • 向偉人學習！［林肯］
- • 用遊戲學遊戲！［DAVE THE DIVER（收錄前期內容）］
- • 面向未來的 IT 英語！
-    - ［Excel］掌握讓你成為辦公大神的關鍵／統計函數！
-    - ［Unity］征服遊戲開發基礎、編輯器與 C# 函式！
-    - ［程式設計］學習 C#、Python、JAVA 的核心概念！
+遊戲準備了 2 萬個英語單字與 3 萬個英語句子。您可以搜尋想學習的單字，並透過包含該單字的句子進行學習。遊戲也提供日常會話、旅遊英語等多種學習內容。
 
-現在就開始最有趣的英語學習吧！
-一邊享受遊戲，一邊讓英語實力悄悄進步！
-立刻進入 Hero Hunmin 的世界吧！
+將新聞、書籍、媒體內容、流行歌曲歌詞等文字貼上後，系統會自動整理成適合英語學習的句子。
+
+遊戲更有趣，英語更自然。
         </p>
     </div>
 </div>
 
-<script>
-    const imgModal = document.getElementById('imgModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalCloseImg = document.getElementById('modalCloseImg');
+<script src="../youtube-config.js"></script>
 
-    document.querySelectorAll('.thumb').forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            const imgPath = thumb.getAttribute('data-img');
+<script>
+    const gameVideo = document.getElementById("gameVideo");
+
+    if (
+        gameVideo &&
+        window.ROUGEMIN_YOUTUBE_VIDEO_ID
+    ) {
+        gameVideo.src =
+            "https://www.youtube.com/embed/" +
+            window.ROUGEMIN_YOUTUBE_VIDEO_ID;
+    }
+
+    const imgModal = document.getElementById("imgModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalCloseImg = document.getElementById("modalCloseImg");
+
+    document.querySelectorAll(".thumb").forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+            const imgPath = thumb.getAttribute("data-img");
+
             modalImage.src = imgPath;
-            imgModal.style.display = 'flex';
+            imgModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
         });
     });
 
-    modalCloseImg.addEventListener('click', () => {
-        imgModal.style.display = 'none';
-        modalImage.src = '';
-    });
+    function closeImageModal() {
+        imgModal.style.display = "none";
+        modalImage.src = "";
+        document.body.style.overflow = "";
+    }
 
-    imgModal.addEventListener('click', (e) => {
-        if (e.target === imgModal) {
-            imgModal.style.display = 'none';
-            modalImage.src = '';
+    modalCloseImg.addEventListener(
+        "click",
+        closeImageModal
+    );
+
+    imgModal.addEventListener("click", (event) => {
+        if (event.target === imgModal) {
+            closeImageModal();
         }
     });
 
-    const descModal = document.getElementById('descModal');
-    const openDescBtn = document.getElementById('openDesc');
-    const modalCloseDesc = document.getElementById('modalCloseDesc');
+    const descModal = document.getElementById("descModal");
+    const openDescBtn = document.getElementById("openDesc");
+    const modalCloseDesc = document.getElementById("modalCloseDesc");
 
-    openDescBtn.addEventListener('click', () => {
-        descModal.style.display = 'flex';
+    openDescBtn.addEventListener("click", () => {
+        descModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
     });
 
-    modalCloseDesc.addEventListener('click', () => {
-        descModal.style.display = 'none';
-    });
+    function closeDescriptionModal() {
+        descModal.style.display = "none";
+        document.body.style.overflow = "";
+    }
 
-    descModal.addEventListener('click', (e) => {
-        if (e.target === descModal) {
-            descModal.style.display = 'none';
+    modalCloseDesc.addEventListener(
+        "click",
+        closeDescriptionModal
+    );
+
+    descModal.addEventListener("click", (event) => {
+        if (event.target === descModal) {
+            closeDescriptionModal();
         }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") {
+            return;
+        }
+
+        closeImageModal();
+        closeDescriptionModal();
     });
 </script>
 
