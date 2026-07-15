@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fun And Study - Hero Hunmin</title>
+
+<title>Fun And Study - RougeMin</title>
+
 <style>
     :root {
         --bg-color: #0f172a;
@@ -26,10 +28,23 @@
 
     body {
         margin: 0;
-        background: radial-gradient(circle at 20% 20%, #1e2538 0%, #0f172a 60%);
+        background:
+            radial-gradient(
+                circle at 20% 20%,
+                #1e2538 0%,
+                #0f172a 60%
+            );
         background-color: var(--bg-color);
         color: var(--text-main);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", Roboto, "Noto Sans", "Segoe UI", sans-serif;
+        font-family:
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Inter",
+            Roboto,
+            "Noto Sans",
+            "Segoe UI",
+            sans-serif;
         line-height: 1.5;
         display: flex;
         justify-content: center;
@@ -45,7 +60,7 @@
         position: relative;
     }
 
-    /* Cabecera (marca + título + icono) */
+    /* 브랜드, 게임 제목, 아이콘 */
     .brand-block {
         display: flex;
         flex-direction: column;
@@ -100,7 +115,7 @@
         text-align: center;
     }
 
-    /* Sección de botones */
+    /* 공통 버튼 패널 */
     .actions-panel {
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--border-color);
@@ -132,7 +147,12 @@
         appearance: none;
         border: 0;
         border-radius: var(--radius);
-        background: linear-gradient(145deg, rgba(79,70,229,0.18) 0%, rgba(79,70,229,0) 60%);
+        background:
+            linear-gradient(
+                145deg,
+                rgba(79,70,229,0.18) 0%,
+                rgba(79,70,229,0) 60%
+            );
         border: 1px solid rgba(255,255,255,0.1);
         box-shadow: var(--shadow-button);
         color: var(--text-main);
@@ -146,6 +166,7 @@
         flex-direction: column;
         gap: 4px;
         position: relative;
+        cursor: pointer;
     }
 
     .link-btn .main-line {
@@ -167,7 +188,7 @@
         transform: scale(0.98);
     }
 
-    /* Botón de descripción del juego */
+    /* 게임 설명 버튼 */
     .desc-btn {
         margin-top: 4px;
         padding: 10px 14px;
@@ -175,7 +196,7 @@
         align-self: stretch;
     }
 
-    /* Sección de enlaces a tiendas */
+    /* 스토어 링크 */
     .store-panel {
         background: rgba(255,255,255,0.03);
         border: 1px solid var(--border-color);
@@ -204,7 +225,16 @@
         }
     }
 
-    /* Vídeo (formato vertical) */
+    /* 공통 섹션 제목 */
+    .section-heading {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--text-dim);
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+
+    /* 유튜브 영상 */
     .video-panel {
         background: rgba(255,255,255,0.02);
         border: 1px solid var(--border-color);
@@ -216,19 +246,11 @@
         gap: 16px;
     }
 
-    .section-heading {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--text-dim);
-        text-align: center;
-        letter-spacing: -0.02em;
-    }
-
     .video-wrapper {
         position: relative;
         width: 100%;
         max-width: 360px;
-        aspect-ratio: 9 / 16; /* relación vertical */
+        aspect-ratio: 9 / 16;
         border-radius: var(--radius);
         overflow: hidden;
         box-shadow: 0 20px 50px rgba(0,0,0,0.6);
@@ -246,7 +268,7 @@
         height: 100%;
     }
 
-    /* Sección de capturas */
+    /* 홍보 이미지 */
     .screens-panel {
         background: rgba(255,255,255,0.02);
         border: 1px solid var(--border-color);
@@ -258,22 +280,19 @@
         gap: 16px;
     }
 
+    /*
+        홍보 이미지 3장을 한 줄에 가로로 정렬합니다.
+    */
     .screens-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    @media (min-width: 480px) {
-        .screens-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
     }
 
     .thumb {
         position: relative;
         background: var(--thumb-bg);
-        border-radius: var(--radius);
+        border-radius: 12px;
         border: 1px solid var(--border-color);
         box-shadow: 0 16px 32px rgba(0,0,0,0.7);
         overflow: hidden;
@@ -293,23 +312,28 @@
     }
 
     .thumb::after {
-        content: "Haz clic para ver en grande";
+        content: "Ver más grande";
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+        background:
+            linear-gradient(
+                to top,
+                rgba(0,0,0,0.75),
+                transparent 70%
+            );
         color: #fff;
-        font-size: 0.7rem;
+        font-size: 0.62rem;
         line-height: 1.2;
         text-align: center;
-        padding: 8px 4px;
+        padding: 8px 2px 6px;
         letter-spacing: -0.02em;
         font-weight: 500;
         pointer-events: none;
     }
 
-    /* Modal (visor de imagen / descripción) */
+    /* 모달 공통 */
     .modal-backdrop {
         position: fixed;
         inset: 0;
@@ -362,7 +386,7 @@
         transform: scale(0.96);
     }
 
-    /* Modal de descripción */
+    /* 게임 설명 모달 */
     .desc-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -387,7 +411,6 @@
         white-space: pre-line;
     }
 
-    /* Nota de pie */
     .footer-note {
         font-size: 0.7rem;
         color: var(--text-dim);
@@ -397,49 +420,85 @@
     }
 </style>
 </head>
+
 <body>
 
 <div class="page-wrap">
 
-    <!-- Marca / título / icono -->
+    <!-- 브랜드 / 게임 제목 / 아이콘 -->
     <header class="brand-block">
-        <div class="brand-name">Fun And Study</div>
+        <div class="brand-name">
+            Fun And Study
+        </div>
 
         <div class="game-identity">
-            <img class="game-icon" src="../images/Hero Hunmin - English Icon.png" alt="Icono de Hero Hunmin" />
 
-            <div class="game-title">Hero Hunmin: juego roguelike de aprendizaje de inglés</div>
-            <div class="game-sub">
-                ¡Mientras disfrutas del juego, tu inglés mejora sin parar!<br/>
-                Un nuevo concepto de aprendizaje de inglés tipo roguelike.
+            <!-- 변경된 RougeMin 아이콘 파일 -->
+            <img
+                class="game-icon"
+                src="../images/RougeMin - English Icon.png"
+                alt="Icono de RougeMin"
+            />
+
+            <div class="game-title">
+                RougeMin: Un juego roguelike para aprender inglés
             </div>
 
-            <button type="button" class="link-btn desc-btn" id="openDesc">
-                Ver descripción detallada del juego
+            <div class="game-sub">
+                Diviértete jugando, aprende inglés con naturalidad
+            </div>
+
+            <button
+                type="button"
+                class="link-btn desc-btn"
+                id="openDesc"
+            >
+                Ver más detalles sobre el juego
             </button>
         </div>
     </header>
 
-    <!-- Información y políticas -->
+    <!-- 게임 정보 및 정책 -->
     <section class="actions-panel">
-        <div class="actions-title">Información y políticas del juego</div>
+        <div class="actions-title">
+            Información y Políticas del Juego
+        </div>
 
         <div class="btn-list">
-            <a class="link-btn" href="../privacy.html">
-                <div class="main-line">Política de privacidad</div>
-                <div class="sub-line">Ir a la página de política de privacidad de Hero Hunmin.</div>
+            <a
+                class="link-btn"
+                href="../privacy.html"
+            >
+                <div class="main-line">
+                    Política de privacidad
+                </div>
+
+                <div class="sub-line">
+                    Ir a la página de la política de privacidad de RougeMin.
+                </div>
             </a>
 
-            <a class="link-btn" href="../account-deletion.html">
-                <div class="main-line">Guía para eliminar la cuenta</div>
-                <div class="sub-line">Te explicamos cómo eliminar tu cuenta y tus datos de Hero Hunmin.</div>
+            <a
+                class="link-btn"
+                href="../account-deletion.html"
+            >
+                <div class="main-line">
+                    Guía de eliminación de cuenta
+                </div>
+
+                <div class="sub-line">
+                    Instrucciones sobre cómo eliminar su cuenta y datos de RougeMin.
+                </div>
             </a>
         </div>
     </section>
 
-    <!-- Enlaces a tiendas -->
+    <!-- 스토어 링크 -->
     <section class="store-panel">
-        <div class="section-heading">Enlaces a las tiendas</div>
+        <div class="section-heading">
+            Enlaces de Descarga
+        </div>
+
         <div class="store-links">
             <a
                 class="link-btn"
@@ -447,180 +506,282 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <div class="main-line">Google Play Store</div>
-                <div class="sub-line">Descargar versión para Android</div>
+                <div class="main-line">
+                    Google Play Store
+                </div>
+
+                <div class="sub-line">
+                    Descargar versión para Android
+                </div>
             </a>
 
             <a
                 class="link-btn"
-                href="https://apps.apple.com/kr/app/hero-hunmin-%EB%A1%9C%EA%B7%B8%EB%9D%BC%EC%9D%B4%ED%81%AC-%EC%98%81%EC%96%B4-%ED%95%99%EC%8A%B5-%EA%B2%8C%EC%9E%84/id6754667621"
+                href="https://apps.apple.com/kr/app/id6754667621"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <div class="main-line">Apple App Store</div>
-                <div class="sub-line">Descargar versión para iOS</div>
+                <div class="main-line">
+                    Apple App Store
+                </div>
+
+                <div class="sub-line">
+                    Descargar versión para iOS
+                </div>
             </a>
         </div>
     </section>
 
-    <!-- Vídeo del juego -->
+    <!-- 게임 플레이 영상 -->
     <section class="video-panel">
-        <div class="section-heading">Vídeo de juego</div>
+        <div class="section-heading">
+            Video de demostración
+        </div>
 
         <div class="video-wrapper">
+            <!-- 영상 ID는 youtube-config.js에서 가져옵니다. -->
             <iframe
-                src="https://www.youtube.com/embed/SgGiZ_Mvy44"
-                title="Hero Hunmin Gameplay"
+                id="gameVideo"
+                title="RougeMin Gameplay"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
+                allowfullscreen
+            >
             </iframe>
         </div>
 
         <div class="footer-note">
-            Este es un vídeo real de juego en formato vertical.<br/>
-            El contenido real del juego puede cambiar según las actualizaciones.
+            Este es un video real del juego en formato vertical.<br />
+            El contenido real del juego puede variar con futuras actualizaciones.
         </div>
     </section>
 
-    <!-- Galería de capturas -->
+    <!-- 게임 홍보 이미지 -->
     <section class="screens-panel">
-        <div class="section-heading">Capturas de pantalla del juego</div>
+        <div class="section-heading">
+            Imágenes Promocionales
+        </div>
 
         <div class="screens-grid">
-            <div class="thumb" data-img="../images/iPhone_Berserk_GamePlay_02.jpg">
-                <img src="../images/iPhone_Berserk_GamePlay_02.jpg" alt="Captura 1"/>
+
+            <!-- 1번: 게임 홍보 이미지 -->
+            <div
+                class="thumb"
+                data-img="../images/promo-spanish-01-game.png"
+            >
+                <img
+                    src="../images/promo-spanish-01-game.png"
+                    alt="Imagen promocional del juego"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_GameQuiz_01.jpg" alt="Captura 2"/>
+            <!-- 2번: 게임 퀴즈 홍보 이미지 -->
+            <div
+                class="thumb"
+                data-img="../images/promo-spanish-02-game-quiz.png"
+            >
+                <img
+                    src="../images/promo-spanish-02-game-quiz.png"
+                    alt="Imagen promocional de los cuestionarios de juego"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GameQuiz_02.jpg">
-                <img src="../images/iPhone_Berserk_GameQuiz_02.jpg" alt="Captura 3"/>
+            <!-- 3번: 문장 퀴즈 홍보 이미지 -->
+            <div
+                class="thumb"
+                data-img="../images/promo-spanish-03-sentence-quiz.png"
+            >
+                <img
+                    src="../images/promo-spanish-03-sentence-quiz.png"
+                    alt="Imagen promocional de los cuestionarios de oraciones"
+                />
             </div>
 
-            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_01.jpg" alt="Captura 4"/>
-            </div>
-
-            <div class="thumb" data-img="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg">
-                <img src="../images/iPhone_Berserk_GiantBuff_BonusQuiz_02.jpg" alt="Captura 5"/>
-            </div>
-
-            <div class="thumb" data-img="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg">
-                <img src="../images/iPhone_Berserk_Roulette_BonusQuiz_01.jpg" alt="Captura 6"/>
-            </div>
         </div>
 
         <div class="footer-note">
-            Haz clic en la imagen para verla más grande.
+            Toca las imágenes para verlas en pantalla completa.
         </div>
     </section>
 
-    <!-- Soporte al cliente -->
+    <!-- 고객지원 -->
     <section class="actions-panel">
-        <div class="actions-title">Atención al cliente</div>
+        <div class="actions-title">
+            Soporte al Usuario
+        </div>
+
         <div class="btn-list">
-            <a class="link-btn" href="mailto:meteor666a@gmail.com?subject=Hero%20Hunmin%20consulta%20de%20soporte&body=Hola.%0D%0A%0D%0APor favor, rellena los siguientes datos con la información de tu consulta.%0D%0A- Tipo de consulta (error, inconveniente, sugerencia de función, etc.):%0D%0A- Dispositivo utilizado (SO, modelo del dispositivo):%0D%0A- Descripción de la situación:%0D%0A%0D%0AGracias.">
-                <div class="main-line">Correo de contacto: meteor666a@gmail.com</div>
-                <div class="sub-line">Envía por correo electrónico los informes de errores, solicitudes de mejora y otras consultas.</div>
+            <a
+                class="link-btn"
+                href="mailto:meteor666a@gmail.com?subject=RougeMin%20Soporte%20y%20Consultas&body=Hola.%0D%0A%0D%0APor%20favor,%20escribe%20los%20detalles%20de%20tu%20consulta%20a%20continuaci%C3%B3n.%0D%0A-%20Tipo%20de%20consulta%20(error,%20sugerencia,%20inconveniente,%20etc.):%0D%0A-%20Dispositivo%20utilizado%20(SO,%20modelo):%0D%0A-%20Descripci%C3%B3n%20del%20problema:%0D%0A%0D%0AMuchas%20gracias."
+            >
+                <div class="main-line">
+                    Correo electrónico de soporte: meteor666a@gmail.com
+                </div>
+
+                <div class="sub-line">
+                    Envíanos por correo electrónico informes de errores, sugerencias de mejora o cualquier otra consulta.
+                </div>
             </a>
         </div>
+
         <div class="footer-note">
-            Te responderemos lo antes posible.<br/>
-            © 2025 Fun And Study. All rights reserved.
+            Responderemos a la brevedad posible.<br />
+            © 2025 Fun And Study. Todos los derechos reservados.
         </div>
     </section>
 
 </div>
 
-<!-- Visor de imagen a pantalla completa -->
-<div class="modal-backdrop" id="imgModal">
+<!-- 전체 화면 이미지 뷰어 -->
+<div
+    class="modal-backdrop"
+    id="imgModal"
+>
     <div class="modal-inner">
-        <img id="modalImage" src="" alt="Vista previa de la captura"/>
-        <button class="modal-close" id="modalCloseImg">✕ Cerrar</button>
+        <img
+            id="modalImage"
+            src=""
+            alt="Vista previa de la imagen promocional"
+        />
+
+        <button
+            type="button"
+            class="modal-close"
+            id="modalCloseImg"
+        >
+            ✕ Cerrar
+        </button>
     </div>
 </div>
 
-<!-- Modal de descripción del juego -->
-<div class="modal-backdrop" id="descModal">
+<!-- 게임 소개 모달 -->
+<div
+    class="modal-backdrop"
+    id="descModal"
+>
     <div class="modal-inner desc-inner">
-        <button class="modal-close" id="modalCloseDesc">✕ Cerrar</button>
-        <h2>Descripción del juego</h2>
+
+        <button
+            type="button"
+            class="modal-close"
+            id="modalCloseDesc"
+        >
+            ✕ Cerrar
+        </button>
+
+        <h2>
+            Sobre el juego
+        </h2>
+
         <p>
-¡Hemos fusionado a la perfección los emocionantes combates y la progresión de un roguelike con el aprendizaje de inglés!
-Haz crecer a tu héroe con desafíos sin fin,
-abre cofres del tesoro y completa tu propia build.
-Cuando aciertas los cuestionarios de inglés, se reducen los tiempos de reutilización y se activan potentes buffs de quiz.
+Un juego roguelike para aprender inglés diseñado para ayudarte a ver, escuchar y repetir palabras y oraciones de manera constante mientras juegas.
 
-Un sistema de aprendizaje que se te queda grabado
- • Aprendizaje de inglés basado en la producción: escuchar, hablar y practicar con cuestionarios, sin memorización pasiva.
- • Más de 20 000 frases y 30 000 palabras en una enorme base de datos.
- • Aprender a través de frases es mucho más efectivo para recordar y usar el idioma.
- • Busca las palabras que te despierten curiosidad y apréndelas al instante dentro de frases.
+Al igual que se aprende mejor un idioma local escuchándolo y repitiéndolo en el lugar en vez de estudiarlo solo en libros, la repetición de la escucha y el habla en inglés te ayudará a familiarizarte con la pronunciación y las expresiones de manera natural y precisa.
 
-¡Todo el inglés del mundo en un solo lugar! Contenido que se amplía sin parar
- • Refuerza las bases desde cero. [Conversaciones cotidianas]
- • ¿Cómo se dice tu hobby en inglés? [Viajes, fútbol, moda, coches, fitness, pop]
- • Para conversaciones más profundas. [Mitología griega y romana, cultura mundial, términos de economía]
- • Aprende de grandes personajes históricos. [Lincoln]
- • ¡Aprende inglés con otros juegos! [DAVE THE DIVER (incluye el contenido inicial)]
- • Inglés de IT para tu futuro.
-    - [Excel] Domina las funciones clave y estadísticas para convertirte en una leyenda de la oficina.
-    - [Unity] Domina los fundamentos del desarrollo de juegos, el editor y las funciones de C#.
-    - [Programación] Aprende los conceptos clave de C#, Python y JAVA.
+Hemos preparado 20,000 palabras y 30,000 oraciones. Puedes buscar cualquier palabra que desees y aprenderla dentro de una oración, además de disponer de diversos contenidos como inglés de conversación diaria e inglés para viajes.
 
-¡Empieza ahora la forma más divertida de estudiar inglés!
-Mientras disfrutas del juego, tu nivel de inglés sube casi sin darte cuenta.
-¡Entra ahora mismo en el mundo de Hero Hunmin!
+Si pegas cualquier texto (de noticias, libros, medios, letras de canciones pop, etc.), el juego estructurará automáticamente oraciones adecuadas para tu aprendizaje.
+
+Diviértete jugando, aprende inglés con naturalidad.
         </p>
     </div>
 </div>
 
-<script>
-    // Lógica del visor de imagen
-    const imgModal = document.getElementById('imgModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalCloseImg = document.getElementById('modalCloseImg');
+<!-- main 폴더에 있는 공통 유튜브 설정 파일 -->
+<script src="../youtube-config.js"></script>
 
-    document.querySelectorAll('.thumb').forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            const imgPath = thumb.getAttribute('data-img');
+<script>
+    /*
+        youtube-config.js 예시:
+
+        window.ROUGEMIN_YOUTUBE_VIDEO_ID = "cHKZaiQ3miA";
+    */
+
+    // 공통 유튜브 영상 ID 적용
+    const gameVideo = document.getElementById("gameVideo");
+
+    if (
+        gameVideo &&
+        window.ROUGEMIN_YOUTUBE_VIDEO_ID
+    ) {
+        gameVideo.src =
+            "https://www.youtube.com/embed/" +
+            window.ROUGEMIN_YOUTUBE_VIDEO_ID;
+    }
+
+    // 이미지 확대 모달 요소
+    const imgModal = document.getElementById("imgModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalCloseImg = document.getElementById("modalCloseImg");
+
+    // 모든 홍보 이미지 클릭 이벤트
+    document.querySelectorAll(".thumb").forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+            const imgPath = thumb.getAttribute("data-img");
+
             modalImage.src = imgPath;
-            imgModal.style.display = 'flex';
+            imgModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
         });
     });
 
-    modalCloseImg.addEventListener('click', () => {
-        imgModal.style.display = 'none';
-        modalImage.src = '';
-    });
+    // 이미지 모달 닫기
+    function closeImageModal() {
+        imgModal.style.display = "none";
+        modalImage.src = "";
+        document.body.style.overflow = "";
+    }
 
-    imgModal.addEventListener('click', (e) => {
-        if (e.target === imgModal) {
-            imgModal.style.display = 'none';
-            modalImage.src = '';
+    modalCloseImg.addEventListener(
+        "click",
+        closeImageModal
+    );
+
+    // 검은 배경을 눌러도 닫기
+    imgModal.addEventListener("click", (event) => {
+        if (event.target === imgModal) {
+            closeImageModal();
         }
     });
 
-    // Lógica del modal de descripción
-    const descModal = document.getElementById('descModal');
-    const openDescBtn = document.getElementById('openDesc');
-    const modalCloseDesc = document.getElementById('modalCloseDesc');
+    // 게임 설명 모달 요소
+    const descModal = document.getElementById("descModal");
+    const openDescBtn = document.getElementById("openDesc");
+    const modalCloseDesc = document.getElementById("modalCloseDesc");
 
-    openDescBtn.addEventListener('click', () => {
-        descModal.style.display = 'flex';
+    // 게임 소개 열기
+    openDescBtn.addEventListener("click", () => {
+        descModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
     });
 
-    modalCloseDesc.addEventListener('click', () => {
-        descModal.style.display = 'none';
-    });
+    // 게임 소개 닫기
+    function closeDescriptionModal() {
+        descModal.style.display = "none";
+        document.body.style.overflow = "";
+    }
 
-    descModal.addEventListener('click', (e) => {
-        if (e.target === descModal) {
-            descModal.style.display = 'none';
+    modalCloseDesc.addEventListener(
+        "click",
+        closeDescriptionModal
+    );
+
+    // 검은 배경을 눌러도 닫기
+    descModal.addEventListener("click", (event) => {
+        if (event.target === descModal) {
+            closeDescriptionModal();
         }
+    });
+
+    // ESC 키로 열린 모달 닫기
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") {
+            return;
+        }
+
+        closeImageModal();
+        closeDescriptionModal();
     });
 </script>
 
